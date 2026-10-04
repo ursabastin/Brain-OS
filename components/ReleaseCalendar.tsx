@@ -32,7 +32,7 @@ export const SYNDICATE_PRODUCTS: SyndicateProduct[] = [
     category: 'Second Brain & Digital Economics',
     status: 'available',
     price: '₹999',
-    comparePrice: '₹2,999',
+    comparePrice: '₹14,999',
     problem: 'Eliminates 100+ hours of chaotic trial-and-error in conceiving, packaging, and pricing digital assets.',
     deliverables: [
       '360 Interconnected Markdown notes in 11 sovereign domains',
@@ -370,7 +370,7 @@ export const ReleaseCalendar: React.FC<ReleaseCalendarProps> = ({ onOpenCheckout
                       className="w-full sm:w-auto px-4 py-2.5 bg-black hover:bg-neutral-800 text-white font-mono text-xs font-black uppercase tracking-wider btn-neo flex items-center justify-center gap-2 cursor-pointer"
                     >
                       <Lock className="w-3.5 h-3.5 text-neo-yellow" />
-                      <span>UNLOCK NOW &bull; {prod.price}</span>
+                      <span>UNLOCK BRAIN OS &bull; {prod.price}</span>
                     </button>
                   ) : (
                     <div className="w-full sm:w-auto text-right">
@@ -404,18 +404,18 @@ export const ReleaseCalendar: React.FC<ReleaseCalendarProps> = ({ onOpenCheckout
               Want priority early-bird access as each of the remaining 11 quarterly products drops? Enter your email to be notified the minute new vaults go live.
             </p>
 
-            <form onSubmit={handleWaitlistSubmit} className="flex gap-2">
+            <form onSubmit={handleWaitlistSubmit} className="flex flex-col sm:flex-row gap-2.5 w-full">
               <input
                 type="email"
                 required
                 value={waitlistEmail}
                 onChange={(e) => setWaitlistEmail(e.target.value)}
                 placeholder="founder@domain.com"
-                className="flex-1 px-3 py-2.5 bg-neutral-900 border border-neutral-700 text-xs text-white font-mono focus:outline-none focus:border-neo-yellow"
+                className="w-full sm:flex-1 px-3 py-2.5 bg-neutral-900 border border-neutral-700 text-xs text-white font-mono focus:outline-none focus:border-neo-yellow"
               />
               <button
                 type="submit"
-                className="px-4 py-2.5 bg-neo-yellow text-black font-black text-xs uppercase btn-neo shrink-0 cursor-pointer"
+                className="w-full sm:w-auto px-5 py-2.5 bg-neo-yellow text-black font-black text-xs uppercase btn-neo shrink-0 cursor-pointer"
               >
                 {waitlistSent ? 'SUBSCRIBED!' : 'JOIN VIP LIST'}
               </button>

@@ -19,6 +19,7 @@ import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
 import { CheckoutModal } from '@/components/CheckoutModal';
 import { ReleaseCalendar } from '@/components/ReleaseCalendar';
+import { VaultNotePreview } from '@/components/VaultNotePreview';
 import { MobileStickyBar } from '@/components/MobileStickyBar';
 import { LOGO_PATH } from '@/components/BrandLogo';
 import { SITE_CONFIG } from '@/lib/config';
@@ -36,7 +37,7 @@ export default function HomePage() {
       color: 'bg-neo-yellow',
       highlights: [
         'Decoy pricing architectures & anchor thresholds',
-        'The ₹999 INR / $49 USD impulse conversion sweetspot',
+        'The ₹999 INR impulse conversion sweetspot',
         'Purchasing Power Parity (PPP) localization grids',
         'Post-purchase price elasticity & daily cost framing',
       ],
@@ -194,10 +195,10 @@ export default function HomePage() {
   const faqs = [
     {
       q: 'What is Brain OS Studio and how does the 3-year release calendar work?',
-      a: 'Brain OS Studio operates on a disciplined 3-year syndicate roadmap: releasing 1 specialized, high-leverage digital product every 3 months (4 per year, 12 total). Product 01 (Brain OS 360-Node Master Vault) is our foundational flagship, available right now for instant download.',
+      a: 'Brain OS Studio operates on a disciplined 3-year syndicate roadmap: releasing 1 specialized, high-leverage digital product every 3 months (4 per year, 12 total). The foundational flagship—the 360-Node Master Vault—is available right now for instant download.',
     },
     {
-      q: 'Do I need paid Obsidian Sync or paid subscriptions to use Product 01?',
+      q: 'Do I need paid Obsidian Sync or paid subscriptions?',
       a: 'No. Obsidian is 100% free for personal use across Windows, macOS, Linux, iOS, and Android. Brain OS requires zero paid plugins, zero API subscriptions, and zero cloud hosting. It lives entirely offline on your local device.',
     },
     {
@@ -240,7 +241,7 @@ export default function HomePage() {
               </div>
               <div className="flex items-center gap-2 text-neutral-600 font-bold text-xs">
                 <span className="w-2.5 h-2.5 rounded-full bg-neo-lime border border-black" />
-                <span>PRODUCT 01: AVAILABLE NOW</span>
+                <span>FLAGSHIP VAULT: AVAILABLE NOW</span>
               </div>
             </div>
 
@@ -278,7 +279,7 @@ export default function HomePage() {
                 <div className="inline-flex items-center gap-3 p-2.5 sm:p-3 bg-neo-gray border-2 border-black font-mono text-xs font-bold">
                   <span>REGULAR VALUE: <span className="line-through text-neutral-500">₹{SITE_CONFIG.comparePriceInr}</span></span>
                   <span className="px-2 py-0.5 bg-neo-lime border border-black font-black text-black">
-                    TODAY ONLY: ₹{SITE_CONFIG.priceInr} ($49 USD)
+                    LAUNCH OFFER: ₹{SITE_CONFIG.priceInr} INR
                   </span>
                 </div>
 
@@ -288,7 +289,7 @@ export default function HomePage() {
                     className="w-full sm:w-auto px-8 sm:px-10 py-4 sm:py-5 bg-neo-yellow hover:bg-[#FFE000] text-black font-mono text-sm sm:text-base font-black uppercase tracking-wider btn-neo flex items-center justify-center gap-3 cursor-pointer"
                   >
                     <Lock className="w-4 h-4 sm:w-5 sm:h-5" />
-                    <span>UNLOCK PRODUCT 01 &bull; ₹{SITE_CONFIG.priceInr}</span>
+                    <span>UNLOCK BRAIN OS VAULT &bull; ₹{SITE_CONFIG.priceInr}</span>
                   </button>
 
                   <a
@@ -314,7 +315,7 @@ export default function HomePage() {
               </div>
               <div className="p-3 bg-neo-bg border-2 border-black shadow-neo-sm">
                 <div className="text-xl sm:text-3xl font-black text-black">360</div>
-                <div className="text-[9px] sm:text-[10px] font-bold text-neutral-600 uppercase">PRODUCT 01 NODES</div>
+                <div className="text-[9px] sm:text-[10px] font-bold text-neutral-600 uppercase">PRODUCTION NODES</div>
               </div>
               <div className="p-3 bg-neo-bg border-2 border-black shadow-neo-sm">
                 <div className="text-xl sm:text-3xl font-black text-black">3,255</div>
@@ -334,14 +335,14 @@ export default function HomePage() {
         <ReleaseCalendar onOpenCheckout={() => setIsCheckoutOpen(true)} />
 
         {/* =========================================================
-            SECTION 3 : VISUAL PROOF — PRODUCT 01 REAL OBSIDIAN GRAPH (IMAGES 3 & 4)
+            SECTION 3 : VISUAL PROOF — AUTHENTIC OBSIDIAN GRAPH (IMAGES 3 & 4)
         ========================================================= */}
         <section id="vault-proof" className="px-4 sm:px-6 max-w-5xl mx-auto">
           <div className="card-neo-lg p-6 sm:p-8 space-y-6 bg-white">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b-2 border-black pb-4 font-mono">
               <div>
                 <span className="px-2 py-0.5 bg-neo-yellow border border-black font-black text-[10px] uppercase shadow-neo-sm">
-                  PRODUCT 01 EVIDENCE
+                  OBSIDIAN EVIDENCE
                 </span>
                 <h2 className="text-lg sm:text-2xl font-black tracking-tight text-black uppercase mt-1">
                   WITNESS THE 360-NODE GRAPH TOPOLOGY
@@ -426,7 +427,12 @@ export default function HomePage() {
         </section>
 
         {/* =========================================================
-            SECTION 4 : THE BRUTAL COMPARISON (WHY CHAOS LOSES)
+            SECTION 4 : AUTHENTIC VAULT PREVIEW (MATH FORMULAS & P&L TABLES)
+        ========================================================= */}
+        <VaultNotePreview />
+
+        {/* =========================================================
+            SECTION 5 : THE BRUTAL COMPARISON (WHY CHAOS LOSES)
         ========================================================= */}
         <section className="px-4 sm:px-6 max-w-5xl mx-auto">
           <div className="card-neo-lg p-6 sm:p-8 space-y-6 bg-white">
@@ -463,14 +469,14 @@ export default function HomePage() {
         </section>
 
         {/* =========================================================
-            SECTION 5 : THE 11 SOVEREIGN KNOWLEDGE DOMAINS (CURIOSITY CATALOG)
+            SECTION 6 : THE 11 SOVEREIGN KNOWLEDGE DOMAINS (CURIOSITY CATALOG)
         ========================================================= */}
         <section id="domains" className="px-4 sm:px-6 max-w-5xl mx-auto">
           <div className="card-neo-lg p-6 sm:p-8 space-y-6 bg-white">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b-2 border-black pb-4 font-mono">
               <div>
                 <span className="px-2 py-0.5 bg-neo-yellow border border-black font-black text-[10px] uppercase shadow-neo-sm">
-                  PRODUCT 01 SCHEMATICS
+                  MASTER VAULT SCHEMATICS
                 </span>
                 <h2 className="text-lg sm:text-2xl font-black tracking-tight text-black uppercase mt-1">
                   THE 11 VAULT DOMAINS &amp; TACTICAL BLUEPRINTS
@@ -482,7 +488,7 @@ export default function HomePage() {
             </div>
 
             <p className="font-mono text-xs text-neutral-700 leading-relaxed">
-              Every folder inside Product 01 contains battle-tested formulas, Mermaid flowcharts, and exact pricing/copywriting frameworks:
+              Every folder inside the vault contains battle-tested formulas, Mermaid flowcharts, and exact pricing/copywriting frameworks:
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 font-mono">
@@ -526,7 +532,7 @@ export default function HomePage() {
         </section>
 
         {/* =========================================================
-            SECTION 6 : MASTER AI CONNECTION ENGINE (THE SUPERCHARGER)
+            SECTION 7 : MASTER AI CONNECTION ENGINE (THE SUPERCHARGER)
         ========================================================= */}
         <section id="ai-engine" className="px-4 sm:px-6 max-w-5xl mx-auto">
           <div className="card-neo-lg p-6 sm:p-8 space-y-6 bg-neo-yellow">
@@ -592,7 +598,7 @@ capabilities:
         </section>
 
         {/* =========================================================
-            SECTION 7 : EXACT DELIVERABLES MANIFEST
+            SECTION 8 : EXACT DELIVERABLES MANIFEST
         ========================================================= */}
         <section className="px-4 sm:px-6 max-w-5xl mx-auto">
           <div className="card-neo-lg p-6 sm:p-8 space-y-6 bg-white">
@@ -604,7 +610,7 @@ capabilities:
               </div>
               <div>
                 <span className="px-2 py-0.5 bg-neo-lime border border-black font-black text-[10px] uppercase font-mono shadow-neo-sm">
-                  PRODUCT 01 ARCHIVE
+                  BRAIN OS MASTER VAULT ARCHIVE
                 </span>
                 <h2 className="text-lg sm:text-2xl font-black font-mono tracking-tight text-black uppercase mt-0.5">
                   THE COMPLETE DELIVERABLES MANIFEST
@@ -665,7 +671,7 @@ capabilities:
         </section>
 
         {/* =========================================================
-            SECTION 8 : FREQUENTLY ADDRESSED INQUIRIES (FAQ)
+            SECTION 9 : FREQUENTLY ADDRESSED INQUIRIES (FAQ)
         ========================================================= */}
         <section id="faq" className="px-4 sm:px-6 max-w-5xl mx-auto">
           <div className="card-neo-lg p-6 sm:p-8 space-y-6 bg-white">
@@ -704,7 +710,7 @@ capabilities:
         </section>
 
         {/* =========================================================
-            SECTION 9 : FINAL ACQUISITION CARD (BUY PRODUCT 01 NOW)
+            SECTION 10 : FINAL ACQUISITION CARD (BUY NOW PROTOCOL)
         ========================================================= */}
         <section id="checkout" className="px-4 sm:px-6 max-w-5xl mx-auto">
           <div className="card-neo-lg p-6 sm:p-12 relative text-center space-y-6 bg-neo-yellow">
@@ -737,7 +743,7 @@ capabilities:
                 className="w-full sm:w-auto px-10 sm:px-12 py-4 sm:py-5 bg-black hover:bg-neutral-800 text-white font-mono text-sm sm:text-base font-black uppercase tracking-wider btn-neo flex items-center justify-center gap-3 cursor-pointer"
               >
                 <Lock className="w-4 h-4 sm:w-5 sm:h-5 text-neo-yellow" />
-                <span>UNLOCK PRODUCT 01 &bull; ₹{SITE_CONFIG.priceInr}</span>
+                <span>UNLOCK BRAIN OS VAULT &bull; ₹{SITE_CONFIG.priceInr}</span>
               </button>
             </div>
 
