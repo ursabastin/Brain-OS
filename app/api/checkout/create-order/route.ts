@@ -3,6 +3,7 @@ import Razorpay from 'razorpay';
 import { SITE_CONFIG } from '@/lib/config';
 import { getPricingConfig } from '@/lib/pricing';
 import { createOrderRecord } from '@/lib/firebase';
+import { auditLogger } from '@/lib/logger';
 
 export async function POST(req: Request) {
   try {
@@ -33,6 +34,8 @@ export async function POST(req: Request) {
         createdAt: new Date().toISOString(),
       });
 
+      await auditLogger.orderInitialized(mockOrderId, clientEmail, amountInPaise, req);
+
       return NextResponse.json({
         success: true,
         mockMode: true,
@@ -61,6 +64,9 @@ export async function POST(req: Request) {
       createdAt: new Date().toISOString(),
     });
 
+    // Forensic audit log
+    await auditLogger.orderInitialized(order.id, clientEmail, Number(order.amount), req);
+
     return NextResponse.json({
       success: true,
       orderId: order.id,
@@ -69,6 +75,7 @@ export async function POST(req: Request) {
       keyId: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID || keyId,
     });
   } catch (error: any) {
+    await auditLogger.paymentFailed('unknown', error?.message || 'Failed to create order', req);
     return NextResponse.json(
       { success: false, error: error?.message || 'Failed to create order.' },
       { status: 500 }

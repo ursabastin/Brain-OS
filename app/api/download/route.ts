@@ -3,6 +3,7 @@ import fs from 'node:fs';
 import { verifyDownloadToken, hashIp } from '@/lib/security';
 import { getVaultAsset } from '@/lib/storage';
 import { logDownloadRecord } from '@/lib/firebase';
+import { auditLogger } from '@/lib/logger';
 
 export async function GET(req: Request) {
   const { searchParams } = new URL(req.url);
@@ -12,6 +13,7 @@ export async function GET(req: Request) {
   const ipHash = hashIp(ip);
 
   if (!token) {
+    await auditLogger.downloadRejected('Missing download token', 'none', req);
     return NextResponse.json({ error: 'Download token is missing.' }, { status: 400 });
   }
 
@@ -30,11 +32,13 @@ export async function GET(req: Request) {
       status: 'invalid_token',
       timestamp: new Date().toISOString(),
     });
+    await auditLogger.downloadRejected('Invalid or expired download token', token.slice(0, 16), req);
     return NextResponse.json({ error: 'Invalid or expired download token.' }, { status: 401 });
   }
 
   const asset = getVaultAsset();
   if (!asset || !fs.existsSync(asset.streamPath)) {
+    await auditLogger.downloadRejected('Storage asset file missing on server', token.slice(0, 16), req);
     return NextResponse.json({ error: 'Vault file not found on storage server.' }, { status: 404 });
   }
 
@@ -49,6 +53,9 @@ export async function GET(req: Request) {
     status: 'success',
     timestamp: new Date().toISOString(),
   });
+
+  // Forensic audit log
+  await auditLogger.downloadExecuted(verified.orderId, verified.email, asset.fileName, token.slice(0, 16), req);
 
   const fileBuffer = fs.readFileSync(asset.streamPath);
 

@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { saveWaitlistSubscriber } from '@/lib/firebase';
+import { auditLogger } from '@/lib/logger';
 
 export async function POST(req: Request) {
   try {
@@ -12,7 +13,11 @@ export async function POST(req: Request) {
       );
     }
 
-    const result = await saveWaitlistSubscriber(email, source || 'calendar_vip_pass');
+    const normalizedEmail = email.toLowerCase().trim();
+    const waitlistSource = source || 'calendar_vip_pass';
+    const result = await saveWaitlistSubscriber(normalizedEmail, waitlistSource);
+
+    await auditLogger.waitlistSubscribed(normalizedEmail, waitlistSource, req);
 
     return NextResponse.json({
       success: true,

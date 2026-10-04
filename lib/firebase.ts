@@ -136,13 +136,13 @@ export async function markOrderPaid(
   const db = getFirestoreDb();
   if (db) {
     try {
-      await db.collection('orders').doc(orderId).update({
+      await db.collection('orders').doc(orderId).set({
         status: 'paid',
         paymentId: paymentData.paymentId,
         signature: paymentData.signature,
         token: paymentData.token,
         verifiedAt: paymentData.verifiedAt,
-      });
+      }, { merge: true });
       await logAuditEvent('PAYMENT_VERIFIED', { orderId, paymentId: paymentData.paymentId });
       return;
     } catch (err) {

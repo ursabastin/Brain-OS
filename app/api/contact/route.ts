@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { saveSupportInquiry } from '@/lib/firebase';
+import { auditLogger } from '@/lib/logger';
 
 export async function POST(req: Request) {
   try {
@@ -9,8 +10,14 @@ export async function POST(req: Request) {
       return NextResponse.json({ success: false, error: 'Email and message are required.' }, { status: 400 });
     }
 
+    const contactName = (name || 'Anonymous').trim();
+    const contactEmail = email.toLowerCase().trim();
+
     // Persist inquiry to Cloud Firestore
-    await saveSupportInquiry(name || 'Anonymous', email, message);
+    await saveSupportInquiry(contactName, contactEmail, message);
+
+    // Audit log entry
+    await auditLogger.inquiryReceived(contactEmail, contactName, req);
 
     return NextResponse.json({
       success: true,

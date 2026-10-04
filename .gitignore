@@ -99,4 +99,6 @@ desktop.ini
 # 7. LOGS & DIAGNOSTICS
 # ------------------------------------------------------------------------------
 logs/
+storage/logs/
 *.log
+*.jsonl

@@ -11,7 +11,7 @@ interface NavbarProps {
 export const Navbar: React.FC<NavbarProps> = ({ onOpenCheckout }) => {
   const handleClick = () => {
     if (onOpenCheckout) onOpenCheckout();
-    else window.location.href = '/#launch-offer';
+    else window.location.href = '/checkout';
   };
 
   return (
