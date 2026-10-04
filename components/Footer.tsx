@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { LOGO_PATH } from './BrandLogo';
-import { LegalDrawer } from './LegalDrawer';
+import { LegalModal } from './LegalModal';
 
 interface FooterProps {
   onOpenLegal?: () => void;
@@ -52,8 +52,8 @@ export const Footer: React.FC<FooterProps> = ({ onOpenLegal }) => {
         </div>
       </footer>
 
-      {/* Lawyer-grade Legal Policies Drawer */}
-      <LegalDrawer
+      {/* Lawyer-grade Legal Policies Pop-up Modal with 2 rows of links */}
+      <LegalModal
         isOpen={internalLegalOpen}
         onClose={() => setInternalLegalOpen(false)}
       />

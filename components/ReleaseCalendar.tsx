@@ -256,9 +256,9 @@ export const ReleaseCalendar: React.FC<ReleaseCalendarProps> = ({ onOpenCheckout
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b-2 border-black pb-5 font-mono">
           <div>
-            <div className="inline-flex items-center gap-2 px-2.5 py-0.5 bg-neo-yellow border border-black font-black text-[10px] uppercase shadow-neo-sm mb-1.5">
+            <div className="inline-flex items-center gap-2 px-2.5 py-0.5 bg-neo-yellow border border-black font-black text-[10px] uppercase shadow-neo-sm mb-1.5 whitespace-nowrap">
               <Calendar className="w-3.5 h-3.5" />
-              <span>3-YEAR ROADMAP &bull; 12 QUARTERLY RELEASES</span>
+              <span>3&#8209;YEAR ROADMAP &bull; 12 QUARTERLY RELEASES</span>
             </div>
             <h2 className="text-xl sm:text-3xl font-black tracking-tight text-black uppercase">
               THE 12-PRODUCT SYNDICATE CALENDAR

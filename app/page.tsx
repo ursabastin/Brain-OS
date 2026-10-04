@@ -231,18 +231,22 @@ export default function HomePage() {
         <section className="px-4 sm:px-6 max-w-5xl mx-auto">
           <div className="card-neo-lg p-6 sm:p-12 relative overflow-hidden bg-white">
             {/* Top pill tags */}
-            <div className="flex flex-wrap items-center justify-between gap-3 border-b-2 border-black pb-5 font-mono text-xs">
-              <div className="flex items-center gap-2">
-                <span className="px-2.5 py-1 bg-neo-coral text-white font-black uppercase border border-black shadow-neo-sm">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b-2 border-black pb-4 sm:pb-5 font-mono text-xs">
+              <div className="flex flex-wrap items-center gap-2">
+                <span className="px-2 py-0.5 bg-neo-coral text-white font-black uppercase border border-black shadow-neo-sm text-[10px] sm:text-xs whitespace-nowrap">
                   STUDIO ARCHITECTURE
                 </span>
-                <span className="font-bold text-black uppercase text-[11px] sm:text-xs">
-                  12-PRODUCT SYNDICATE &bull; 3-YEAR CALENDAR
+                <span className="font-bold text-black uppercase text-[10px] sm:text-xs whitespace-nowrap">
+                  12-PRODUCT SYNDICATE
+                </span>
+                <span className="hidden sm:inline text-neutral-400">&bull;</span>
+                <span className="px-1.5 py-0.5 bg-neo-gray border border-black font-bold text-black uppercase text-[10px] sm:text-xs whitespace-nowrap">
+                  3&#8209;YEAR CALENDAR
                 </span>
               </div>
-              <div className="flex items-center gap-2 text-neutral-600 font-bold text-xs">
-                <span className="w-2.5 h-2.5 rounded-full bg-neo-lime border border-black" />
-                <span>FLAGSHIP VAULT: AVAILABLE NOW</span>
+              <div className="flex items-center gap-2 text-neutral-600 font-bold text-[10px] sm:text-xs shrink-0">
+                <span className="w-2.5 h-2.5 rounded-full bg-neo-lime border border-black shrink-0" />
+                <span className="whitespace-nowrap">FLAGSHIP VAULT: AVAILABLE NOW</span>
               </div>
             </div>
 
