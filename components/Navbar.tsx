@@ -28,7 +28,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenCheckout }) => {
             <span className="font-mono text-base sm:text-lg font-black tracking-tight text-black uppercase">
               BRAIN OS
             </span>
-            <span className="font-mono text-[9px] font-bold tracking-widest text-neutral-600 uppercase">
+            <span className="hidden sm:inline font-mono text-[9px] font-bold tracking-widest text-neutral-600 uppercase">
               STUDIO &bull; 12-PRODUCT SYNDICATE
             </span>
           </div>

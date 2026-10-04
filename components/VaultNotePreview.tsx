@@ -28,33 +28,33 @@ export const VaultNotePreview: React.FC = () => {
           <div className="flex flex-wrap gap-1 p-1 bg-neo-gray border-2 border-black shadow-neo-sm self-start md:self-center">
             <button
               onClick={() => setActiveTab('sweetspot')}
-              className={`px-3 py-2 font-mono text-[11px] font-black uppercase transition-all cursor-pointer ${
+              className={`px-3.5 py-2 font-mono text-xs font-black uppercase transition-all cursor-pointer ${
                 activeTab === 'sweetspot'
                   ? 'bg-black text-white shadow-sm'
                   : 'text-black hover:bg-neutral-200'
               }`}
             >
-              [ 01: ₹999 SWEETSPOT ]
+              ₹999 Unit Economics
             </button>
             <button
               onClick={() => setActiveTab('zerocost')}
-              className={`px-3 py-2 font-mono text-[11px] font-black uppercase transition-all cursor-pointer ${
+              className={`px-3.5 py-2 font-mono text-xs font-black uppercase transition-all cursor-pointer ${
                 activeTab === 'zerocost'
                   ? 'bg-black text-white shadow-sm'
                   : 'text-black hover:bg-neutral-200'
               }`}
             >
-              [ 02: ZERO MARGINAL COST ]
+              Zero Marginal Cost
             </button>
             <button
               onClick={() => setActiveTab('breakeven')}
-              className={`px-3 py-2 font-mono text-[11px] font-black uppercase transition-all cursor-pointer ${
+              className={`px-3.5 py-2 font-mono text-xs font-black uppercase transition-all cursor-pointer ${
                 activeTab === 'breakeven'
                   ? 'bg-black text-white shadow-sm'
                   : 'text-black hover:bg-neutral-200'
               }`}
             >
-              [ 03: BREAK-EVEN ROAS ]
+              Break-Even ROAS
             </button>
           </div>
         </div>
@@ -69,7 +69,7 @@ export const VaultNotePreview: React.FC = () => {
                 <div className="text-neo-lime font-bold">--- YAML FRONTMATTER METADATA ---</div>
                 <div><span className="text-neutral-400">title:</span> &ldquo;The 999 INR Sweetspot: The Definitive Economics of Indian Digital Knowledge Commerce&rdquo;</div>
                 <div><span className="text-neutral-400">domain:</span> &ldquo;Pricing Psychology &amp; Behavioral Economics&rdquo;</div>
-                <div><span className="text-neutral-400">status:</span> verified &bull; <span className="text-neutral-400">word_count:</span> 4,200 &bull; <span className="text-neutral-400">wikilinks:</span> [[UPI Checkout]], [[Left-Digit Bias]], [[PPP Models]]</div>
+                <div><span className="text-neutral-400">status:</span> verified &bull; <span className="text-neutral-400">word_count:</span> 4,200 &bull; <span className="text-neutral-400">topics:</span> UPI Checkout &bull; Left-Digit Bias &bull; PPP Models</div>
               </div>
 
               {/* Executive Thesis Quote */}
@@ -149,7 +149,7 @@ export const VaultNotePreview: React.FC = () => {
                 <div className="text-neo-lime font-bold">--- YAML FRONTMATTER METADATA ---</div>
                 <div><span className="text-neutral-400">title:</span> &ldquo;The Zero Marginal Cost Revolution&rdquo;</div>
                 <div><span className="text-neutral-400">domain:</span> &ldquo;Economic Foundations &amp; Business Architecture&rdquo;</div>
-                <div><span className="text-neutral-400">status:</span> verified &bull; <span className="text-neutral-400">tags:</span> [digital-products, leverage, economics]</div>
+                <div><span className="text-neutral-400">status:</span> verified &bull; <span className="text-neutral-400">tags:</span> digital-products &bull; leverage &bull; economics</div>
               </div>
 
               <div className="border-l-4 border-black pl-4 py-2 bg-white border border-neutral-300 space-y-1">
@@ -182,7 +182,7 @@ export const VaultNotePreview: React.FC = () => {
                 <div className="text-neo-lime font-bold">--- YAML FRONTMATTER METADATA ---</div>
                 <div><span className="text-neutral-400">title:</span> &ldquo;Break-Even Funnel Metrics &amp; Deterministic Paid Scale&rdquo;</div>
                 <div><span className="text-neutral-400">domain:</span> &ldquo;Paid Advertising &amp; Funnel Scaling&rdquo;</div>
-                <div><span className="text-neutral-400">status:</span> verified &bull; <span className="text-neutral-400">tags:</span> [paid-advertising, break-even-roas, funnel-metrics]</div>
+                <div><span className="text-neutral-400">status:</span> verified &bull; <span className="text-neutral-400">tags:</span> paid-advertising &bull; break-even-roas &bull; funnel-metrics</div>
               </div>
 
               <div className="border-l-4 border-black pl-4 py-2 bg-white border border-neutral-300 space-y-1">

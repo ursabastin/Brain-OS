@@ -33,12 +33,12 @@ export const SYNDICATE_PRODUCTS: SyndicateProduct[] = [
     status: 'available',
     price: '₹999',
     comparePrice: '₹7,399',
-    problem: 'Eliminates 100+ hours of chaotic trial-and-error in conceiving, packaging, and pricing digital assets.',
+    problem: 'Eliminates 100+ hours of chaotic trial-and-error in conceiving, packaging, pricing, and scaling sovereign digital knowledge products.',
     deliverables: [
-      '360 Interconnected Markdown notes in 11 sovereign domains',
-      'Master AI Connection Engine.md prompt system for Claude & GPT-4o',
-      '3,255 [[Wikilinks]] + Obsidian Canvas visual roadmap presets',
-      '100% Offline, private, sovereign local architecture',
+      '360 Interconnected production Markdown notes organized in 11 sovereign domains',
+      'Master AI Connection Engine.md prompt system for Claude 3.5 Sonnet & GPT-4o',
+      '3,255 [[Wikilinks]] graph topology with interactive Obsidian Canvas visual roadmaps',
+      '100% Offline, private, local file system architecture with zero recurring cloud subscriptions',
     ],
   },
   {
@@ -51,11 +51,12 @@ export const SYNDICATE_PRODUCTS: SyndicateProduct[] = [
     status: 'next',
     price: '₹999',
     comparePrice: '₹2,499',
-    problem: 'Replaces disorganized clickbait YouTube tutorials with an elite 4-week signal-dense curriculum.',
+    problem: 'Replaces disorganized clickbait YouTube tutorials with an elite, noise-free 4-week execution syllabus.',
     deliverables: [
-      '4-week step-by-step interactive learning roadmap in Obsidian & Notion',
-      'Top 50 high-signal, fluff-free video breakdowns with key timestamps',
-      'Deep markdown syntheses, copy-paste snippets & exercise briefs',
+      '4-week step-by-step interactive skill roadmap structured natively in Obsidian & Notion',
+      'Top 50 high-signal, fluff-free video breakdowns with verified key learning timestamps',
+      'Deep Markdown lecture syntheses, copy-paste production code snippets & weekly project briefs',
+      'Self-directed competency rubrics to track mastery from foundational concepts to production launch',
     ],
   },
   {
@@ -68,11 +69,12 @@ export const SYNDICATE_PRODUCTS: SyndicateProduct[] = [
     status: 'development',
     price: '₹999',
     comparePrice: '₹2,999',
-    problem: 'Stops shallow AI hallucinations; turns Claude & ChatGPT into staff-level researchers and copywriters.',
+    problem: 'Eliminates shallow AI hallucinations; turns Claude, Cursor & ChatGPT into deterministic staff-level strategists.',
     deliverables: [
-      '100+ fine-tuned chain-of-thought prompt files for Claude & Cursor',
-      '15 exportable Make.com and n8n JSON automation blueprints',
-      '.cursorrules and CLAUDE.md developer configuration presets',
+      '100+ fine-tuned chain-of-thought system prompts for Claude Projects, Cursor & Custom GPTs',
+      '15 exportable Make.com and n8n JSON automation blueprints for webhook workflows',
+      'Pre-configured .cursorrules and CLAUDE.md project directives for autonomous code generation',
+      'Prompt chaining architectures for objection-handling sales copy and funnel engineering',
     ],
   },
   {
@@ -85,11 +87,12 @@ export const SYNDICATE_PRODUCTS: SyndicateProduct[] = [
     status: 'scheduled',
     price: '₹999',
     comparePrice: '₹2,499',
-    problem: 'Fixes digital products that get traffic but zero sales because the copy is weak and boring.',
+    problem: 'Solves storefront visitor drop-off with battle-tested direct response formulas that systematically convert traffic.',
     deliverables: [
-      '50+ proven headline formulas, PAS frameworks & objection FAQ templates',
-      '10 complete sales page wireframes in Markdown + Tailwind CSS blocks',
-      'Micro-copy bank for CTA buttons, guarantee boxes & trust badges',
+      '50+ proven headline formulas, PAS frameworks & objection annihilation FAQ matrices',
+      '10 complete high-converting sales page wireframes in Markdown + responsive Tailwind CSS blocks',
+      'Micro-copy swipe file for sticky buy buttons, risk-reversal guarantee badges & value stacks',
+      'High-converting Video Sales Letter (VSL) script templates and postscript (P.S.) closing formulas',
     ],
   },
 
@@ -104,11 +107,12 @@ export const SYNDICATE_PRODUCTS: SyndicateProduct[] = [
     status: 'scheduled',
     price: '₹1,199',
     comparePrice: '₹2,999',
-    problem: 'Solves creator block. Allows a solopreneur to script and batch 60 viral reels in under 4 hours.',
+    problem: 'Solves creative paralysis by enabling a solo operator to script, film, and schedule 60 viral reels in 4 hours.',
     deliverables: [
-      '60 word-for-word cinematic reel scripts with visual direction notes',
-      '31 viral hook formulas engineered for 70%+ 3-second retention',
-      'CapCut/Premiere presets + ManyChat comment automation JSONs',
+      '60 word-for-word short-form video scripts engineered for high retention with visual direction cues',
+      '31 psychological hook formulas optimized for the first 3 seconds of viewer attention',
+      'CapCut and Premiere Pro project presets with dynamic caption styling and kinetic typography',
+      'ManyChat automated comment-to-DM conversion funnels for hands-free lead capture',
     ],
   },
   {
@@ -121,11 +125,12 @@ export const SYNDICATE_PRODUCTS: SyndicateProduct[] = [
     status: 'scheduled',
     price: '₹1,499',
     comparePrice: '₹3,999',
-    problem: 'Saves agency founders working 70-hour weeks trapped in manual onboarding and scope creep.',
+    problem: 'Frees agency owners and consultants from manual onboarding chaos, scope creep, and payment disputes.',
     deliverables: [
-      '45 plug-and-play SOPs in Obsidian & Notion (client onboarding, handoffs)',
-      'Legal client agreements, NDA templates & payment milestone contracts',
-      'Scope defense playbooks and automatic invoice reminder scripts',
+      '45 turnkey standard operating procedures (SOPs) formatted in Obsidian and Notion',
+      'Bulletproof client service agreements, NDA templates & milestone payment schedules',
+      'Scope creep defense playbooks and automated invoice reminder email sequences',
+      'Client onboarding intake forms and automated asynchronous project delivery portals',
     ],
   },
   {
@@ -138,11 +143,12 @@ export const SYNDICATE_PRODUCTS: SyndicateProduct[] = [
     status: 'scheduled',
     price: '₹1,999',
     comparePrice: '₹4,999',
-    problem: 'Saves 40–50 hours of tedious checkout plumbing, auth setup, and webhook debugging.',
+    problem: 'Saves 50+ hours of repetitive plumbing: pre-configures authentication, payment rails, and asset streaming.',
     deliverables: [
-      'Production Next.js 14 App Router codebase with Tailwind and TypeScript',
-      'Pre-configured Razorpay native UPI checkout & HMAC webhook handlers',
-      'Supabase user authentication & Cloudflare R2 tokenized file streaming',
+      'Production-ready Next.js 14 App Router codebase with Tailwind CSS, Lucide React & TypeScript',
+      'Native Razorpay UPI checkout integration with HMAC webhook cryptographic verification',
+      'Supabase database schemas, Row Level Security (RLS) policies & magic link authentication',
+      'Cloudflare R2 tokenized asset download streaming gateway preventing link piracy',
     ],
   },
   {
@@ -155,11 +161,12 @@ export const SYNDICATE_PRODUCTS: SyndicateProduct[] = [
     status: 'scheduled',
     price: '₹999',
     comparePrice: '₹2,499',
-    problem: 'Prevents founders from burning ad budgets without knowing exact break-even CAC and margins.',
+    problem: 'Prevents founders from burning marketing capital blindly by giving deterministic visibility into margins and CAC.',
     deliverables: [
-      'Interactive Google Sheets models: Break-Even CAC, ROAS Forecaster',
-      'Digital product LTV tracking & cash-flow velocity planner',
-      'Indian GST and export tax calculation worksheets',
+      'Interactive financial models: Break-Even CAC simulator and dynamic ROAS forecast spreadsheet',
+      'Customer Lifetime Value (LTV) and Average Order Value (AOV) expansion modeling calculators',
+      'Indian GST, OIDAR tax compliance worksheets and export LUT reconciliation templates',
+      'Cash-flow velocity planner and digital product valuation estimation spreadsheets',
     ],
   },
 
@@ -174,11 +181,12 @@ export const SYNDICATE_PRODUCTS: SyndicateProduct[] = [
     status: 'scheduled',
     price: '₹1,499',
     comparePrice: '₹3,999',
-    problem: 'Eliminates cash-flow droughts for freelancers struggling to find consistent high-paying clients.',
+    problem: 'Eliminates revenue inconsistency by providing an actionable system to source and close high-ticket B2B accounts.',
     deliverables: [
-      'Verified directory of 1,000 high-intent tech, agency & creator leads',
-      '5-part cold outreach sequences & LinkedIn connection frameworks',
-      'High-ticket objection handling & contract closing scripts',
+      'Curated directory of 1,000 verified high-intent decision-makers across tech, media, and agency verticals',
+      '5-stage personalized cold email outreach sequences with 40%+ open rate benchmarks',
+      'LinkedIn social selling frameworks, connection request scripts, and conversation starters',
+      'High-ticket discovery call inquiry outlines, objection handling matrix, and proposal templates',
     ],
   },
   {
@@ -191,11 +199,12 @@ export const SYNDICATE_PRODUCTS: SyndicateProduct[] = [
     status: 'scheduled',
     price: '₹1,299',
     comparePrice: '₹2,999',
-    problem: 'Replaces $50/mo recurring web scrapers with clean local scripts that run on your own machine.',
+    problem: 'Replaces expensive recurring SaaS tools with lightweight local Python automation scripts you own 100%.',
     deliverables: [
-      '25 production-ready Python automation utilities (scrapers, trackers)',
-      '1-click local terminal launcher + lightweight web GUI for non-coders',
-      'Automated batch PDF watermarking & SEO keyword clustering scripts',
+      '25 standalone Python utility scripts for data scraping, automated reporting, and competitor monitoring',
+      '1-click local terminal launcher and lightweight browser-based GUI for non-technical execution',
+      'Batch PDF compilation, cryptographic watermarking & digital stamping automation utilities',
+      'Automated SEO keyword clustering and search intent categorization scripts',
     ],
   },
   {
@@ -208,11 +217,12 @@ export const SYNDICATE_PRODUCTS: SyndicateProduct[] = [
     status: 'scheduled',
     price: '₹1,299',
     comparePrice: '₹3,499',
-    problem: 'Helps solo operators build a media distribution moat that outlasts algorithm changes.',
+    problem: 'Builds an owned media distribution moat that insulates your revenue from social platform algorithm shifts.',
     deliverables: [
-      'Automated content curation workflows & newsletter retention funnels',
-      'Sponsorship media kit templates & rate card calculators',
-      'Multi-platform syndication scripts (Substack, Beehiiv, X threads)',
+      'Automated content curation pipelines and high-converting newsletter onboarding sequences',
+      'Sponsorship media kit presentation templates and programmatic advertising rate card calculators',
+      'Multi-platform syndication scripts for simultaneous cross-posting to Substack, Beehiiv, and X',
+      'Organic referral program architectures with milestone rewards for viral subscriber growth',
     ],
   },
   {
@@ -225,11 +235,12 @@ export const SYNDICATE_PRODUCTS: SyndicateProduct[] = [
     status: 'scheduled',
     price: '₹4,999',
     comparePrice: '₹18,500',
-    problem: 'Single universal key granting permanent access to all 12 products across the 3-year syndicate.',
+    problem: 'Single universal credential providing lifetime sovereign access to all 12 products across the 3-year syndicate.',
     deliverables: [
-      'Universal master license unlocking all 12 product repositories',
-      'Private syndicate member forum access & quarterly roadmap sessions',
-      'Guaranteed free access to all future revisions and expansions',
+      'Universal master license unlocking all 12 digital product repositories and codebases',
+      'Private syndicate member forum access with quarterly founder roadmap review sessions',
+      'Guaranteed lifetime access to all future revisions, major version upgrades, and asset expansions',
+      'Direct priority developer support desk and early access to experimental prototype tools',
     ],
   },
 ];
@@ -280,7 +291,7 @@ export const ReleaseCalendar: React.FC<ReleaseCalendarProps> = ({ onOpenCheckout
                     : 'text-black hover:bg-neutral-200'
                 }`}
               >
-                YEAR {yr} {yr === 1 ? '(ACTIVE)' : ''}
+                YEAR {yr}
               </button>
             ))}
           </div>

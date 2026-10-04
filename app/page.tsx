@@ -292,9 +292,10 @@ export default function HomePage() {
                 </div>
 
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                  {/* On desktop: visible in hero. On mobile: hidden here to prevent duplicate unlock button with bottom sticky bar */}
                   <button
                     onClick={() => setIsCheckoutOpen(true)}
-                    className="w-full sm:w-auto px-8 sm:px-10 py-4 sm:py-5 bg-neo-yellow hover:bg-[#FFE000] text-black font-mono text-sm sm:text-base font-black uppercase tracking-wider btn-neo flex items-center justify-center gap-3 cursor-pointer"
+                    className="hidden sm:flex w-auto px-8 sm:px-10 py-4 sm:py-5 bg-neo-yellow hover:bg-[#FFE000] text-black font-mono text-sm sm:text-base font-black uppercase tracking-wider btn-neo items-center justify-center gap-3 cursor-pointer"
                   >
                     <Lock className="w-4 h-4 sm:w-5 sm:h-5" />
                     <span>UNLOCK BRAIN OS VAULT</span>
@@ -327,12 +328,23 @@ export default function HomePage() {
               </div>
               <div className="p-3 bg-neo-bg border-2 border-black shadow-neo-sm">
                 <div className="text-xl sm:text-3xl font-black text-black">3,255</div>
-                <div className="text-[9px] sm:text-[10px] font-bold text-neutral-600 uppercase">[[WIKILINKS]]</div>
+                <div className="text-[9px] sm:text-[10px] font-bold text-neutral-600 uppercase">WIKILINKS</div>
               </div>
               <div className="p-3 bg-neo-bg border-2 border-black shadow-neo-sm">
                 <div className="text-xl sm:text-3xl font-black text-black">100%</div>
                 <div className="text-[9px] sm:text-[10px] font-bold text-neutral-600 uppercase">LOCAL &amp; PRIVATE</div>
               </div>
+            </div>
+
+            {/* On mobile: Yellow unlock button shifted downward below telemetry grid */}
+            <div className="sm:hidden pt-4 text-center">
+              <button
+                onClick={() => setIsCheckoutOpen(true)}
+                className="w-full px-6 py-4 bg-neo-yellow hover:bg-[#FFE000] text-black font-mono text-sm font-black uppercase tracking-wider btn-neo flex items-center justify-center gap-2 cursor-pointer shadow-neo"
+              >
+                <Lock className="w-4 h-4" />
+                <span>UNLOCK BRAIN OS VAULT</span>
+              </button>
             </div>
           </div>
         </section>
@@ -353,31 +365,31 @@ export default function HomePage() {
                   OBSIDIAN EVIDENCE
                 </span>
                 <h2 className="text-lg sm:text-2xl font-black tracking-tight text-black uppercase mt-1">
-                  WITNESS THE 360-NODE GRAPH TOPOLOGY
+                  WITNESS THE GRAPH TOPOLOGY
                 </h2>
               </div>
 
-              {/* Interactive View Switcher */}
+              {/* Interactive View Switcher (Clean labels, zero brackets, zero numbers) */}
               <div className="inline-flex p-1 bg-neo-gray border-2 border-black shadow-neo-sm self-start sm:self-auto">
                 <button
                   onClick={() => setVaultView('macro')}
-                  className={`px-3 py-1.5 font-mono text-xs font-black uppercase transition-all cursor-pointer ${
+                  className={`px-3.5 py-1.5 font-mono text-xs font-black uppercase transition-all cursor-pointer ${
                     vaultView === 'macro'
                       ? 'bg-black text-white shadow-sm'
                       : 'text-black hover:bg-neutral-200'
                   }`}
                 >
-                  [ 01 : MACRO CONSTELLATION ]
+                  Macro Constellation
                 </button>
                 <button
                   onClick={() => setVaultView('detail')}
-                  className={`px-3 py-1.5 font-mono text-xs font-black uppercase transition-all cursor-pointer ${
+                  className={`px-3.5 py-1.5 font-mono text-xs font-black uppercase transition-all cursor-pointer ${
                     vaultView === 'detail'
                       ? 'bg-black text-white shadow-sm'
                       : 'text-black hover:bg-neutral-200'
                   }`}
                 >
-                  [ 02 : NODE TRAVERSAL ]
+                  Node Traversal
                 </button>
               </div>
             </div>
@@ -453,8 +465,45 @@ export default function HomePage() {
               </h2>
             </div>
 
-            <div className="overflow-x-auto">
-              <table className="w-full text-left font-mono text-xs border-2 border-black min-w-[500px]">
+            {/* Mobile View: Stacked Cards with ZERO horizontal scrolling */}
+            <div className="sm:hidden space-y-3.5 font-mono text-xs">
+              {comparison.map((item, idx) => (
+                <div key={idx} className="border-2 border-black p-3.5 bg-white shadow-neo-sm space-y-2.5">
+                  <div className="flex items-center justify-between border-b-2 border-black pb-2">
+                    <span className="font-black text-black uppercase tracking-tight text-xs">
+                      {item.feature}
+                    </span>
+                    <span className="text-[10px] font-black px-1.5 py-0.5 bg-neo-gray border border-black">
+                      VECTOR 0{idx + 1}
+                    </span>
+                  </div>
+
+                  {/* Broken Way */}
+                  <div className="p-2.5 bg-red-50 border border-black space-y-0.5">
+                    <span className="text-[10px] font-black uppercase text-neo-coral block">
+                      ✕ TYPICAL SOLOPRENEUR WAY
+                    </span>
+                    <p className="font-sans text-xs text-neutral-700 leading-snug">
+                      {item.broken}
+                    </p>
+                  </div>
+
+                  {/* Brain OS Advantage */}
+                  <div className="p-2.5 bg-neo-lime/20 border-2 border-black space-y-0.5">
+                    <span className="text-[10px] font-black uppercase text-black font-mono block">
+                      ✓ THE BRAIN OS ADVANTAGE
+                    </span>
+                    <p className="font-sans text-xs font-bold text-black leading-snug">
+                      {item.brainos}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Desktop View: Full-width table, no side scrolling */}
+            <div className="hidden sm:block">
+              <table className="w-full text-left font-mono text-xs border-2 border-black">
                 <thead>
                   <tr className="bg-neo-black text-white border-b-2 border-black">
                     <th className="p-3.5 uppercase font-black">DECISION VECTOR</th>
