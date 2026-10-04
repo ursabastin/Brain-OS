@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import { saveSupportInquiry } from '@/lib/firebase';
 
 export async function POST(req: Request) {
   try {
@@ -8,14 +9,15 @@ export async function POST(req: Request) {
       return NextResponse.json({ success: false, error: 'Email and message are required.' }, { status: 400 });
     }
 
-    // In production without external db, logs to server console securely
-    console.log(`[BrainOS Support Inquiry] From: ${name || 'Anonymous'} <${email}>: ${message}`);
+    // Persist inquiry to Cloud Firestore
+    await saveSupportInquiry(name || 'Anonymous', email, message);
 
     return NextResponse.json({
       success: true,
       message: 'Your inquiry has been received. Our team will respond within 24 hours.',
     });
-  } catch {
+  } catch (error: any) {
+    console.error('Contact submission error:', error);
     return NextResponse.json({ success: false, error: 'Failed to submit inquiry.' }, { status: 500 });
   }
 }

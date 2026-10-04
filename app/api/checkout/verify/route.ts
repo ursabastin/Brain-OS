@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import crypto from 'node:crypto';
 import { safeEqual, createDownloadToken } from '@/lib/security';
+import { markOrderPaid } from '@/lib/firebase';
 
 export async function POST(req: Request) {
   try {
@@ -26,6 +27,14 @@ export async function POST(req: Request) {
 
     // Mint short-lived token (7 days)
     const token = createDownloadToken(email, orderId);
+
+    // Update order record in Cloud Firestore
+    await markOrderPaid(orderId, {
+      paymentId,
+      signature,
+      token,
+      verifiedAt: new Date().toISOString(),
+    });
 
     return NextResponse.json({
       success: true,

@@ -249,15 +249,31 @@ export const ReleaseCalendar: React.FC<ReleaseCalendarProps> = ({ onOpenCheckout
   const [activeYear, setActiveYear] = useState<number>(1);
   const [waitlistEmail, setWaitlistEmail] = useState('');
   const [waitlistSent, setWaitlistSent] = useState(false);
+  const [waitlistLoading, setWaitlistLoading] = useState(false);
 
   const filteredProducts = SYNDICATE_PRODUCTS.filter((p) => p.year === activeYear);
 
-  const handleWaitlistSubmit = (e: React.FormEvent) => {
+  const handleWaitlistSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (waitlistEmail.includes('@')) {
-      setWaitlistSent(true);
-      setTimeout(() => setWaitlistSent(false), 4000);
-      setWaitlistEmail('');
+    if (!waitlistEmail.includes('@') || waitlistLoading) return;
+
+    setWaitlistLoading(true);
+    try {
+      const res = await fetch('/api/waitlist', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: waitlistEmail.trim(), source: 'calendar_vip_pass' }),
+      });
+      const data = await res.json();
+      if (data.success) {
+        setWaitlistSent(true);
+        setTimeout(() => setWaitlistSent(false), 5000);
+        setWaitlistEmail('');
+      }
+    } catch (err) {
+      console.error('Waitlist network error:', err);
+    } finally {
+      setWaitlistLoading(false);
     }
   };
 

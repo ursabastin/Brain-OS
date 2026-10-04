@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import Razorpay from 'razorpay';
 import { SITE_CONFIG } from '@/lib/config';
 import { getPricingConfig } from '@/lib/pricing';
+import { createOrderRecord } from '@/lib/firebase';
 
 export async function POST(req: Request) {
   try {
@@ -11,12 +12,27 @@ export async function POST(req: Request) {
       return NextResponse.json({ success: false, error: 'Valid email is required.' }, { status: 400 });
     }
 
+    const { currentPrice } = getPricingConfig();
+    const amountInPaise = currentPrice * 100;
+    const clientName = (name || 'Anonymous Purchaser').trim();
+    const clientEmail = email.toLowerCase().trim();
+
     const keyId = process.env.RAZORPAY_KEY_ID;
     const keySecret = process.env.RAZORPAY_KEY_SECRET;
 
     // Resilient fallback if fresh credentials haven't been added yet
     if (!keyId || !keySecret) {
       const mockOrderId = `order_test_${Date.now()}`;
+      await createOrderRecord({
+        orderId: mockOrderId,
+        customerName: clientName,
+        customerEmail: clientEmail,
+        amount: amountInPaise,
+        currency: 'INR',
+        status: 'created',
+        createdAt: new Date().toISOString(),
+      });
+
       return NextResponse.json({
         success: true,
         mockMode: true,
@@ -25,15 +41,24 @@ export async function POST(req: Request) {
       });
     }
 
-    const { currentPrice } = getPricingConfig();
     const rzp = new Razorpay({ key_id: keyId, key_secret: keySecret });
-    const amountInPaise = currentPrice * 100;
 
     const order = await rzp.orders.create({
       amount: amountInPaise,
       currency: 'INR',
       receipt: `rcpt_${Date.now().toString().slice(-8)}`,
-      notes: { email, name: name || 'Anonymous Purchaser' },
+      notes: { email: clientEmail, name: clientName },
+    });
+
+    // Save order in Cloud Firestore
+    await createOrderRecord({
+      orderId: order.id,
+      customerName: clientName,
+      customerEmail: clientEmail,
+      amount: Number(order.amount),
+      currency: order.currency,
+      status: 'created',
+      createdAt: new Date().toISOString(),
     });
 
     return NextResponse.json({
