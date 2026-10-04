@@ -2,23 +2,15 @@
 
 import React from 'react';
 import Link from 'next/link';
-import {
-  ShieldCheck,
-  Lock,
-  Zap,
-  Layers,
-  FileText,
-  Scale,
-  Sparkles,
-} from 'lucide-react';
+import { Scale } from 'lucide-react';
 import { LOGO_PATH } from './BrandLogo';
 
 export const Footer: React.FC = () => {
   return (
     <footer className="border-t-[3px] border-black bg-neo-black text-white pt-12 pb-8 font-mono">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 space-y-10">
-        {/* Main 4-Column Neo-Brutalist Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10">
+        {/* Main 3-Column Neo-Brutalist Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-12">
           {/* COLUMN 1: BRAND IDENTITY & PURPOSE */}
           <div className="space-y-4">
             <Link href="/" className="flex items-center gap-3 group">
@@ -179,54 +171,11 @@ export const Footer: React.FC = () => {
               </li>
             </ul>
           </div>
-
-          {/* COLUMN 4: TRUST SIGNALS & SPECIFICATIONS */}
-          <div className="space-y-3">
-            <div className="border-b border-neutral-800 pb-2">
-              <span className="text-xs font-black uppercase tracking-wider text-neo-lime">
-                SECURITY &amp; SPECS
-              </span>
-            </div>
-            <ul className="space-y-2 text-xs font-bold text-neutral-300">
-              <li className="flex items-center gap-2">
-                <ShieldCheck className="w-4 h-4 text-neo-lime shrink-0" />
-                <span>48-Hour Technical Defect Guarantee</span>
-              </li>
-              <li className="flex items-center gap-2">
-                <Lock className="w-4 h-4 text-neo-yellow shrink-0" />
-                <span>Razorpay 256-Bit SSL Encryption</span>
-              </li>
-              <li className="flex items-center gap-2">
-                <Zap className="w-4 h-4 text-neo-coral shrink-0" />
-                <span>Instant 1.6 MB .ZIP Direct Delivery</span>
-              </li>
-              <li className="flex items-center gap-2">
-                <FileText className="w-4 h-4 text-neo-cyan shrink-0" />
-                <span>100% Offline Local Markdown Files</span>
-              </li>
-              <li className="flex items-center gap-2">
-                <Layers className="w-4 h-4 text-neo-lime shrink-0" />
-                <span>Zero Recurring Cloud Egress Fees</span>
-              </li>
-              <li className="flex items-center gap-2">
-                <Sparkles className="w-4 h-4 text-neo-yellow shrink-0" />
-                <span>Single-User Commercial License</span>
-              </li>
-            </ul>
-          </div>
         </div>
 
-        {/* Bottom Clean Divider & Base Ribbon (Tags & Legal Console completely removed) */}
-        <div className="border-t border-neutral-800 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-neutral-400">
-          <div className="flex items-center gap-2">
-            <span className="font-bold text-white uppercase">BRAIN OS STUDIO</span>
-            <span>&bull;</span>
-            <span>SOVEREIGN KNOWLEDGE INFRASTRUCTURE</span>
-          </div>
-
-          <div className="text-neutral-500 text-[11px]">
-            &copy; {new Date().getFullYear()} Brain OS &bull; All Rights Reserved
-          </div>
+        {/* Bottom Clean Divider & Base Ribbon */}
+        <div className="border-t border-neutral-800 pt-6 text-center text-xs font-mono text-neutral-500 text-[11px]">
+          &copy; {new Date().getFullYear()} Brain OS &bull; All Rights Reserved
         </div>
       </div>
     </footer>
