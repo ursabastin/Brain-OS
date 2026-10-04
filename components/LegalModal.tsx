@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import {
   X,
@@ -39,6 +39,12 @@ export const LegalModal: React.FC<LegalModalProps> = ({
   const [activePolicy, setActivePolicy] = useState<PolicyKey>(
     (defaultTab as PolicyKey) || 'privacy'
   );
+
+  useEffect(() => {
+    if (defaultTab) {
+      setActivePolicy(defaultTab as PolicyKey);
+    }
+  }, [defaultTab, isOpen]);
 
   if (!isOpen) return null;
 
