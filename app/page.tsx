@@ -20,6 +20,7 @@ import { Footer } from '@/components/Footer';
 import { CheckoutModal } from '@/components/CheckoutModal';
 import { ReleaseCalendar } from '@/components/ReleaseCalendar';
 import { VaultNotePreview } from '@/components/VaultNotePreview';
+import { LaunchCountdown } from '@/components/LaunchCountdown';
 import { MobileStickyBar } from '@/components/MobileStickyBar';
 import { LOGO_PATH } from '@/components/BrandLogo';
 import { SITE_CONFIG } from '@/lib/config';
@@ -206,7 +207,7 @@ export default function HomePage() {
       a: 'Inside the vault root sits Master AI Connection Engine.md. When you upload this file to a Claude Project or OpenAI Custom GPT, your model ingests the entire 360-node framework. You can then ask it to audit your pricing, write objection-handling sales copy, or build an entire launch funnel grounded in first-principles business engineering.',
     },
     {
-      q: 'What happens immediately after I pay ₹999?',
+      q: 'What happens immediately after completing checkout?',
       a: 'Your payment clears securely via Razorpay (supporting UPI, Google Pay, PhonePe, Cards, and NetBanking). You are immediately redirected to your fulfillment console where you download the complete 1.6 MB BrainOS-Master-Vault.zip archive instantly.',
     },
     {
@@ -274,13 +275,16 @@ export default function HomePage() {
                 </p>
               </div>
 
-              {/* Price Anchor & Primary CTA */}
+              {/* Value Anchor & Primary CTA */}
               <div className="space-y-4 pt-2">
                 <div className="inline-flex items-center gap-3 p-2.5 sm:p-3 bg-neo-gray border-2 border-black font-mono text-xs font-bold">
                   <span>REGULAR VALUE: <span className="line-through text-neutral-500">₹{SITE_CONFIG.comparePriceInr}</span></span>
-                  <span className="px-2 py-0.5 bg-neo-lime border border-black font-black text-black">
-                    LAUNCH OFFER: ₹{SITE_CONFIG.priceInr} INR
-                  </span>
+                  <a
+                    href="#launch-offer"
+                    className="px-2 py-0.5 bg-neo-yellow border border-black font-black text-black hover:bg-black hover:text-white transition-colors"
+                  >
+                    1-MONTH LAUNCH OFFER &darr;
+                  </a>
                 </div>
 
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -289,7 +293,7 @@ export default function HomePage() {
                     className="w-full sm:w-auto px-8 sm:px-10 py-4 sm:py-5 bg-neo-yellow hover:bg-[#FFE000] text-black font-mono text-sm sm:text-base font-black uppercase tracking-wider btn-neo flex items-center justify-center gap-3 cursor-pointer"
                   >
                     <Lock className="w-4 h-4 sm:w-5 sm:h-5" />
-                    <span>UNLOCK BRAIN OS VAULT &bull; ₹{SITE_CONFIG.priceInr}</span>
+                    <span>UNLOCK BRAIN OS VAULT</span>
                   </button>
 
                   <a
@@ -710,50 +714,9 @@ capabilities:
         </section>
 
         {/* =========================================================
-            SECTION 10 : FINAL ACQUISITION CARD (BUY NOW PROTOCOL)
+            SECTION 10 : OFFICIAL 1-MONTH LAUNCH OFFER CARD WITH LIVE TIMER
         ========================================================= */}
-        <section id="checkout" className="px-4 sm:px-6 max-w-5xl mx-auto">
-          <div className="card-neo-lg p-6 sm:p-12 relative text-center space-y-6 bg-neo-yellow">
-            <div className="inline-flex items-center gap-2 px-3 py-1 bg-black text-white font-mono text-xs font-black uppercase shadow-neo-sm">
-              <Zap className="w-4 h-4 text-neo-yellow" />
-              <span>IMMEDIATE UNLOCK CONSOLE</span>
-            </div>
-
-            <h2 className="text-2xl sm:text-5xl font-black font-mono tracking-tight text-black uppercase leading-tight">
-              INSTALL BRAIN OS IN 60 SECONDS
-            </h2>
-
-            <p className="text-xs sm:text-base text-neutral-800 font-mono max-w-xl mx-auto leading-relaxed">
-              Unlock the entire 360-node Obsidian second brain, 11 domains, and the Master AI Connection Engine right now.
-            </p>
-
-            <div className="py-2">
-              <div className="inline-flex items-baseline gap-3 p-3 sm:p-4 bg-white border-2 border-black shadow-neo font-mono">
-                <span className="text-3xl sm:text-5xl font-black text-black">₹{SITE_CONFIG.priceInr}</span>
-                <span className="text-sm sm:text-base text-neutral-500 line-through">₹{SITE_CONFIG.comparePriceInr}</span>
-                <span className="px-2 py-0.5 bg-neo-lime border border-black font-black text-[10px] sm:text-xs text-black uppercase">
-                  LIFETIME ACCESS
-                </span>
-              </div>
-            </div>
-
-            <div className="flex justify-center">
-              <button
-                onClick={() => setIsCheckoutOpen(true)}
-                className="w-full sm:w-auto px-10 sm:px-12 py-4 sm:py-5 bg-black hover:bg-neutral-800 text-white font-mono text-sm sm:text-base font-black uppercase tracking-wider btn-neo flex items-center justify-center gap-3 cursor-pointer"
-              >
-                <Lock className="w-4 h-4 sm:w-5 sm:h-5 text-neo-yellow" />
-                <span>UNLOCK BRAIN OS VAULT &bull; ₹{SITE_CONFIG.priceInr}</span>
-              </button>
-            </div>
-
-            <div className="border-t-2 border-black pt-4 flex flex-wrap items-center justify-center gap-4 sm:gap-6 font-mono text-[11px] sm:text-xs text-neutral-800 font-bold">
-              <span>🛡️ RAZORPAY 256-BIT SECURE CHECKOUT</span>
-              <span>⚡ INSTANT .ZIP DOWNLOAD</span>
-              <span>🔒 100% PRIVATE OFFLINE ARCHITECTURE</span>
-            </div>
-          </div>
-        </section>
+        <LaunchCountdown onOpenCheckout={() => setIsCheckoutOpen(true)} />
       </main>
 
       <Footer />

@@ -59,7 +59,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenCheckout }) => {
             onClick={handleClick}
             className="px-3.5 sm:px-4 py-2 bg-neo-yellow hover:bg-[#FFE000] text-black font-mono text-xs font-black uppercase tracking-wider btn-neo flex items-center gap-2 cursor-pointer"
           >
-            <span>GET BRAIN OS &bull; ₹{SITE_CONFIG.priceInr}</span>
+            <span>GET BRAIN OS</span>
           </button>
         </div>
       </div>

@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import Razorpay from 'razorpay';
 import { SITE_CONFIG } from '@/lib/config';
+import { getPricingConfig } from '@/lib/pricing';
 
 export async function POST(req: Request) {
   try {
@@ -24,8 +25,9 @@ export async function POST(req: Request) {
       });
     }
 
+    const { currentPrice } = getPricingConfig();
     const rzp = new Razorpay({ key_id: keyId, key_secret: keySecret });
-    const amountInPaise = SITE_CONFIG.priceInr * 100;
+    const amountInPaise = currentPrice * 100;
 
     const order = await rzp.orders.create({
       amount: amountInPaise,

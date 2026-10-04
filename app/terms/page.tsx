@@ -78,7 +78,7 @@ export default function TermsPage() {
           <section className="space-y-2 pt-6 border-t-2 border-black">
             <h2 className="text-sm font-black text-black font-mono uppercase">[ 05 ] Limitation of Liability</h2>
             <p>
-              To the maximum extent permitted by applicable law, in no event shall Brain OS, its creators, or affiliates be liable for any indirect, punitive, incidental, special, or consequential damages. In all circumstances, our maximum aggregate liability is capped at the exact amount paid by You (INR 999 / USD 49).
+              To the maximum extent permitted by applicable law, in no event shall Brain OS, its creators, or affiliates be liable for any indirect, punitive, incidental, special, or consequential damages. In all circumstances, our maximum aggregate liability is capped at the exact amount paid by You (₹999 INR / ₹1,399 INR).
             </p>
           </section>
 

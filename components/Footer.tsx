@@ -1,50 +1,62 @@
-import React from 'react';
-import Link from 'next/link';
-import { LOGO_PATH } from './BrandLogo';
+'use client';
 
-export const Footer: React.FC = () => {
+import React, { useState } from 'react';
+import { LOGO_PATH } from './BrandLogo';
+import { LegalDrawer } from './LegalDrawer';
+
+interface FooterProps {
+  onOpenLegal?: () => void;
+}
+
+export const Footer: React.FC<FooterProps> = ({ onOpenLegal }) => {
+  const [internalLegalOpen, setInternalLegalOpen] = useState(false);
+
+  const handleToggle = () => {
+    if (onOpenLegal) {
+      onOpenLegal();
+    } else {
+      setInternalLegalOpen(true);
+    }
+  };
+
   return (
-    <footer className="border-t-2 border-black bg-neo-black text-white py-12 text-xs">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 space-y-8">
-        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 pb-6 border-b border-neutral-800">
-          {/* Brand mark */}
+    <>
+      <footer className="border-t-2 border-black bg-neo-black text-white py-6">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 flex items-center justify-between">
+          {/* Brand mark only */}
           <div className="flex items-center gap-3">
-            <div className="w-9 h-9 bg-neo-yellow border-2 border-white flex items-center justify-center p-1.5 shadow-sm">
+            <div className="w-8 h-8 bg-neo-yellow border-2 border-white flex items-center justify-center p-1 shadow-sm shrink-0">
               <svg viewBox="0 0 100 100" fill="#000000" className="w-full h-full">
                 <path fillRule="evenodd" clipRule="evenodd" d={LOGO_PATH} />
               </svg>
             </div>
-            <div>
-              <span className="font-mono font-black text-lg text-white uppercase tracking-wider block">
-                BRAIN OS
-              </span>
-              <span className="font-mono text-[10px] text-neutral-400 uppercase tracking-widest">
-                SOVEREIGN KNOWLEDGE ARCHITECTURE
-              </span>
-            </div>
-          </div>
-
-          {/* Links */}
-          <div className="flex flex-wrap items-center gap-5 font-mono text-xs font-bold uppercase text-neutral-300">
-            <Link href="/terms" className="hover:text-neo-yellow transition-colors underline decoration-1 underline-offset-4">Terms &amp; License</Link>
-            <Link href="/refund-policy" className="hover:text-neo-yellow transition-colors underline decoration-1 underline-offset-4">Refund Policy</Link>
-            <Link href="/privacy" className="hover:text-neo-yellow transition-colors underline decoration-1 underline-offset-4">Privacy Charter</Link>
-            <Link href="/contact" className="hover:text-neo-yellow transition-colors underline decoration-1 underline-offset-4">Support Desk</Link>
-          </div>
-        </div>
-
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-neutral-400">
-          <p>&copy; {new Date().getFullYear()} BrainOS.site &bull; 360-Node Obsidian Second Brain &bull; 100% Offline</p>
-          <div className="flex items-center gap-2">
-            <span className="inline-block px-2 py-0.5 bg-neo-lime text-black font-black text-[10px] border border-black uppercase">
-              ZERO CLOUD FEES
-            </span>
-            <span className="inline-block px-2 py-0.5 bg-neo-coral text-white font-black text-[10px] border border-white uppercase">
-              LIFETIME SOVEREIGNTY
+            <span className="font-mono font-black text-base sm:text-lg text-white uppercase tracking-wider">
+              BRAIN OS
             </span>
           </div>
+
+          {/* Small 3-Line Policy Toggle Button */}
+          <div className="flex items-center">
+            <button
+              onClick={handleToggle}
+              title="Legal Policies & Protective Instruments"
+              aria-label="Open Legal Policies"
+              className="w-10 h-10 bg-neo-yellow hover:bg-[#FFE000] text-black border-2 border-white flex flex-col items-center justify-center gap-1 p-2 shadow-neo-sm hover:scale-105 active:scale-95 transition-all cursor-pointer group"
+            >
+              {/* Clean 3-line hamburger toggle */}
+              <span className="w-5 h-0.5 bg-black transition-transform group-hover:scale-x-110" />
+              <span className="w-5 h-0.5 bg-black transition-transform group-hover:scale-x-110" />
+              <span className="w-5 h-0.5 bg-black transition-transform group-hover:scale-x-110" />
+            </button>
+          </div>
         </div>
-      </div>
-    </footer>
+      </footer>
+
+      {/* Lawyer-grade Legal Policies Drawer */}
+      <LegalDrawer
+        isOpen={internalLegalOpen}
+        onClose={() => setInternalLegalOpen(false)}
+      />
+    </>
   );
 };

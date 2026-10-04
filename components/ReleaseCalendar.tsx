@@ -32,7 +32,7 @@ export const SYNDICATE_PRODUCTS: SyndicateProduct[] = [
     category: 'Second Brain & Digital Economics',
     status: 'available',
     price: '₹999',
-    comparePrice: '₹14,999',
+    comparePrice: '₹7,399',
     problem: 'Eliminates 100+ hours of chaotic trial-and-error in conceiving, packaging, and pricing digital assets.',
     deliverables: [
       '360 Interconnected Markdown notes in 11 sovereign domains',
@@ -370,7 +370,7 @@ export const ReleaseCalendar: React.FC<ReleaseCalendarProps> = ({ onOpenCheckout
                       className="w-full sm:w-auto px-4 py-2.5 bg-black hover:bg-neutral-800 text-white font-mono text-xs font-black uppercase tracking-wider btn-neo flex items-center justify-center gap-2 cursor-pointer"
                     >
                       <Lock className="w-3.5 h-3.5 text-neo-yellow" />
-                      <span>UNLOCK BRAIN OS &bull; {prod.price}</span>
+                      <span>UNLOCK BRAIN OS</span>
                     </button>
                   ) : (
                     <div className="w-full sm:w-auto text-right">

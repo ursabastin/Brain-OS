@@ -4,12 +4,15 @@ import React from 'react';
 import { Lock } from 'lucide-react';
 import { LOGO_PATH } from './BrandLogo';
 import { SITE_CONFIG } from '@/lib/config';
+import { getPricingConfig } from '@/lib/pricing';
 
 interface MobileStickyBarProps {
   onOpenCheckout: () => void;
 }
 
 export const MobileStickyBar: React.FC<MobileStickyBarProps> = ({ onOpenCheckout }) => {
+  const { currentPrice, comparePrice } = getPricingConfig();
+
   return (
     <div className="fixed bottom-0 inset-x-0 z-40 p-3 bg-white/95 backdrop-blur-md border-t-2 border-black md:hidden shadow-neo-lg">
       <div className="flex items-center justify-between gap-3 max-w-md mx-auto">
@@ -24,8 +27,8 @@ export const MobileStickyBar: React.FC<MobileStickyBarProps> = ({ onOpenCheckout
               BRAIN OS
             </div>
             <div className="flex items-baseline gap-1 mt-0.5 font-mono">
-              <span className="text-sm font-black text-black">₹{SITE_CONFIG.priceInr}</span>
-              <span className="text-[10px] text-neutral-500 line-through">₹{SITE_CONFIG.comparePriceInr}</span>
+              <span className="text-sm font-black text-black">₹{currentPrice}</span>
+              <span className="text-[10px] text-neutral-500 line-through">₹{comparePrice}</span>
             </div>
           </div>
         </div>

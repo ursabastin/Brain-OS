@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { X, Lock, ShieldCheck, Loader2 } from 'lucide-react';
 import { SITE_CONFIG } from '@/lib/config';
+import { getPricingConfig } from '@/lib/pricing';
 import { LOGO_PATH } from './BrandLogo';
 
 interface CheckoutModalProps {
@@ -111,6 +112,8 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose })
     }
   };
 
+  const { currentPrice, comparePrice } = getPricingConfig();
+
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
       <div className="relative w-full max-w-md bg-white border-[3px] border-black p-6 sm:p-8 text-black space-y-6 shadow-neo-xl">
@@ -152,8 +155,8 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose })
           <div>
             <span className="text-[10px] font-bold uppercase text-black block">LIFETIME LICENSE</span>
             <div className="flex items-baseline gap-2">
-              <span className="text-3xl font-black text-black">₹{SITE_CONFIG.priceInr}</span>
-              <span className="text-xs text-neutral-600 line-through">₹{SITE_CONFIG.comparePriceInr}</span>
+              <span className="text-3xl font-black text-black">₹{currentPrice}</span>
+              <span className="text-xs text-neutral-600 line-through">₹{comparePrice}</span>
             </div>
           </div>
           <span className="px-2.5 py-1 bg-black text-white font-mono text-[10px] font-black uppercase border border-black">
@@ -201,7 +204,7 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose })
             className="w-full py-4 bg-neo-yellow hover:bg-[#FFE000] text-black font-mono text-sm font-black uppercase tracking-wider flex items-center justify-center gap-2 btn-neo cursor-pointer"
           >
             {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : <Lock className="w-4 h-4" />}
-            <span>{loading ? 'INITIALIZING CHECKOUT...' : `PAY ₹${SITE_CONFIG.priceInr} & DOWNLOAD VAULT`}</span>
+            <span>{loading ? 'INITIALIZING CHECKOUT...' : `PAY ₹${currentPrice} & DOWNLOAD VAULT`}</span>
           </button>
         </form>
 
