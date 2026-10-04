@@ -1,0 +1,61 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+body {
+  background-color: #FBF9F4;
+  color: #000000;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+}
+
+/* Neo-Brutalist interactive button transitions */
+.btn-neo {
+  border: 2px solid #000000;
+  box-shadow: 4px 4px 0px 0px #000000;
+  transition: all 0.15s ease-in-out;
+}
+
+.btn-neo:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 6px 6px 0px 0px #000000;
+}
+
+.btn-neo:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0px 0px #000000;
+}
+
+.card-neo {
+  border: 2px solid #000000;
+  box-shadow: 4px 4px 0px 0px #000000;
+  background-color: #FFFFFF;
+}
+
+.card-neo-lg {
+  border: 3px solid #000000;
+  box-shadow: 6px 6px 0px 0px #000000;
+  background-color: #FFFFFF;
+}
+
+/* Brutalist grid pattern */
+.bg-neo-grid {
+  background-image: radial-gradient(#000000 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Minimalist scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #FBF9F4;
+  border-left: 1px solid #000000;
+}
+::-webkit-scrollbar-thumb {
+  background: #000000;
+}

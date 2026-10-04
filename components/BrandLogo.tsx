@@ -1,0 +1,147 @@
+import React from 'react';
+
+// Exact vector path traced from the brand mark
+export const LOGO_PATH = "M 86.41 50 L 86.78 50.66 L 88.12 51.36 L 89.52 52.1 L 90.65 52.87 L 91.53 53.65 L 92.27 54.46 L 92.92 55.28 L 93.51 56.13 L 94.04 56.99 L 94.51 57.86 L 94.83 58.72 L 95.05 59.58 L 95.17 60.43 L 95.31 61.3 L 95.36 62.16 L 95.41 63.02 L 95.42 63.89 L 95.43 64.77 L 95.4 65.63 L 95.3 66.49 L 95.1 67.31 L 94.84 68.12 L 94.55 68.91 L 94.21 69.68 L 93.79 70.42 L 93.34 71.14 L 92.78 71.8 L 92.27 72.47 L 91.59 73.05 L 90.92 73.62 L 90.14 74.11 L 89.36 74.58 L 88.54 75.02 L 87.69 75.41 L 86.86 75.8 L 86.01 76.15 L 85.24 76.54 L 84.44 76.9 L 83.69 77.28 L 83 77.69 L 82.31 78.08 L 81.68 78.52 L 81.03 78.93 L 80.46 79.42 L 79.93 79.94 L 79.45 80.49 L 78.95 81.06 L 78.48 81.64 L 78.08 82.31 L 77.68 83 L 77.33 83.76 L 76.98 84.54 L 76.6 85.32 L 76.26 86.16 L 75.92 87.04 L 75.53 87.87 L 75.09 88.64 L 74.59 89.37 L 74.07 90.07 L 73.55 90.8 L 72.97 91.45 L 72.37 92.08 L 71.7 92.6 L 71.03 93.11 L 70.3 93.54 L 69.57 93.95 L 68.83 94.35 L 68.03 94.64 L 67.22 94.87 L 66.4 95.05 L 65.57 95.21 L 64.72 95.28 L 63.85 95.29 L 62.99 95.28 L 62.13 95.23 L 61.27 95.16 L 60.39 94.96 L 59.52 94.72 L 58.64 94.41 L 57.77 94.02 L 56.91 93.56 L 56.07 93.06 L 55.23 92.5 L 54.41 91.83 L 53.61 91.02 L 52.82 89.91 L 52.06 88.64 L 51.33 87.25 L 50.65 86.43 L 49.99 86.41 L 49.33 87.2 L 48.63 88.31 L 47.9 89.59 L 47.13 90.7 L 46.34 91.64 L 45.53 92.4 L 44.7 93.03 L 43.87 93.52 L 43.04 93.88 L 42.2 94.16 L 41.35 94.45 L 40.48 94.72 L 39.61 94.96 L 38.73 95.16 L 37.88 95.23 L 37.01 95.28 L 36.15 95.29 L 35.29 95.28 L 34.44 95.2 L 33.62 94.99 L 32.83 94.73 L 32.05 94.43 L 31.28 94.11 L 30.51 93.77 L 29.8 93.32 L 29.11 92.84 L 28.43 92.33 L 27.81 91.74 L 27.2 91.15 L 26.64 90.48 L 26.11 89.78 L 25.63 89.02 L 25.18 88.23 L 24.8 87.37 L 24.44 86.52 L 24.07 85.71 L 23.74 84.87 L 23.41 84.05 L 23.07 83.27 L 22.68 82.57 L 22.28 81.89 L 21.83 81.29 L 21.34 80.73 L 20.84 80.2 L 20.35 79.65 L 19.83 79.13 L 19.27 78.65 L 18.62 78.24 L 18 77.81 L 17.31 77.42 L 16.63 77.02 L 15.86 76.66 L 15.04 76.34 L 14.21 75.99 L 13.37 75.64 L 12.55 75.25 L 11.75 74.83 L 10.96 74.39 L 10.23 73.88 L 9.56 73.34 L 8.94 72.76 L 8.4 72.11 L 7.88 71.46 L 7.36 70.79 L 6.88 70.1 L 6.46 69.38 L 6.06 68.65 L 5.72 67.89 L 5.43 67.11 L 5.2 66.31 L 5.06 65.48 L 4.96 64.64 L 4.89 63.8 L 4.87 62.94 L 4.9 62.09 L 4.98 61.23 L 5.18 60.36 L 5.42 59.49 L 5.73 58.62 L 6.11 57.75 L 6.58 56.89 L 7.1 56.04 L 7.69 55.21 L 8.41 54.39 L 9.12 53.59 L 10.04 52.81 L 11.06 52.07 L 12.37 51.34 L 13.6 50.65 L 13.97 50 L 13.52 49.34 L 12.29 48.65 L 10.98 47.93 L 9.9 47.17 L 9.01 46.4 L 8.28 45.6 L 7.64 44.78 L 7.1 43.96 L 6.63 43.12 L 6.22 42.27 L 5.78 41.39 L 5.47 40.52 L 5.26 39.66 L 5.14 38.81 L 5.1 37.97 L 5.05 37.11 L 5.14 36.28 L 5.21 35.44 L 5.3 34.61 L 5.43 33.78 L 5.57 32.94 L 5.76 32.12 L 6.03 31.33 L 6.34 30.56 L 6.75 29.84 L 7.16 29.11 L 7.68 28.44 L 8.23 27.79 L 8.86 27.21 L 9.54 26.65 L 10.23 26.12 L 10.96 25.61 L 11.76 25.18 L 12.59 24.78 L 13.48 24.44 L 14.36 24.12 L 15.18 23.77 L 15.94 23.4 L 16.69 23.04 L 17.43 22.68 L 18.11 22.28 L 18.78 21.89 L 19.36 21.44 L 19.94 20.97 L 20.45 20.45 L 20.94 19.91 L 21.39 19.32 L 21.85 18.73 L 22.28 18.11 L 22.68 17.43 L 23.07 16.73 L 23.42 15.96 L 23.76 15.17 L 24.12 14.36 L 24.5 13.56 L 24.86 12.72 L 25.28 11.92 L 25.73 11.14 L 26.24 10.43 L 26.75 9.72 L 27.3 9.04 L 27.87 8.38 L 28.49 7.79 L 29.14 7.23 L 29.84 6.75 L 30.56 6.33 L 31.3 5.94 L 32.06 5.59 L 32.84 5.31 L 33.66 5.12 L 34.51 5.04 L 35.36 4.96 L 36.19 4.83 L 37.03 4.79 L 37.89 4.82 L 38.76 4.95 L 39.62 5.1 L 40.48 5.27 L 41.33 5.47 L 42.17 5.68 L 43.02 6.04 L 43.86 6.44 L 44.7 6.97 L 45.53 7.6 L 46.34 8.36 L 47.13 9.27 L 47.89 10.32 L 48.63 11.52 L 49.33 12.61 L 49.99 13.45 L 50.65 13.46 L 51.33 12.75 L 52.05 11.47 L 52.81 10.25 L 53.59 9.23 L 54.39 8.44 L 55.22 7.64 L 56.06 7.02 L 56.9 6.5 L 57.75 6.11 L 58.62 5.73 L 59.47 5.5 L 60.33 5.28 L 61.21 5.08 L 62.08 4.96 L 62.97 4.81 L 63.83 4.78 L 64.69 4.8 L 65.51 4.96 L 66.36 5.06 L 67.19 5.22 L 68.03 5.37 L 68.84 5.61 L 69.61 5.94 L 70.34 6.38 L 71.06 6.82 L 71.77 7.27 L 72.42 7.82 L 73.06 8.39 L 73.63 9.07 L 74.19 9.74 L 74.67 10.52 L 75.12 11.31 L 75.53 12.14 L 75.89 13 L 76.24 13.86 L 76.59 14.69 L 76.98 15.46 L 77.33 16.24 L 77.68 17 L 78.08 17.69 L 78.48 18.36 L 78.95 18.95 L 79.45 19.51 L 79.93 20.06 L 80.46 20.58 L 81.03 21.07 L 81.66 21.5 L 82.27 21.96 L 82.9 22.4 L 83.58 22.82 L 84.27 23.23 L 85.07 23.59 L 85.92 23.92 L 86.83 24.23 L 87.69 24.59 L 88.55 24.98 L 89.37 25.41 L 90.18 25.87 L 90.92 26.38 L 91.65 26.92 L 92.33 27.5 L 92.9 28.15 L 93.39 28.84 L 93.82 29.57 L 94.21 30.31 L 94.55 31.09 L 94.84 31.88 L 95.1 32.69 L 95.3 33.51 L 95.4 34.37 L 95.43 35.23 L 95.42 36.11 L 95.41 36.98 L 95.39 37.83 L 95.37 38.68 L 95.28 39.54 L 95.11 40.41 L 94.88 41.27 L 94.56 42.13 L 94.15 42.99 L 93.56 43.86 L 92.94 44.71 L 92.27 45.54 L 91.51 46.35 L 90.59 47.14 L 89.46 47.9 L 88.18 48.64 L 86.92 49.33 Z M 47.8 42 A 2.2 2.2 0 0 1 52.2 42 L 52.2 58 A 2.2 2.2 0 0 1 47.8 58 Z";
+
+export type LogoVariant = 'mark' | 'horizontal' | 'vertical' | 'app-icon' | 'blueprint' | 'seal' | 'inverted';
+
+interface BrandLogoProps {
+  variant?: LogoVariant;
+  className?: string;
+  size?: number;
+}
+
+export function BrandLogo({ variant = 'horizontal', className = '', size = 32 }: BrandLogoProps) {
+  // 1. Pure Logomark
+  if (variant === 'mark') {
+    return (
+      <svg
+        viewBox="0 0 100 100"
+        fill="currentColor"
+        width={size}
+        height={size}
+        className={`inline-block flex-shrink-0 ${className}`}
+      >
+        <path fillRule="evenodd" clipRule="evenodd" d={LOGO_PATH} />
+      </svg>
+    );
+  }
+
+  // 2. Horizontal Primary Lockup
+  if (variant === 'horizontal') {
+    return (
+      <div className={`inline-flex items-center gap-3 ${className}`}>
+        <svg
+          viewBox="0 0 100 100"
+          fill="currentColor"
+          width={size}
+          height={size}
+          className="flex-shrink-0"
+        >
+          <path fillRule="evenodd" clipRule="evenodd" d={LOGO_PATH} />
+        </svg>
+        <div className="flex flex-col text-left leading-none">
+          <span className="font-mono text-base font-bold tracking-[0.16em] text-ink uppercase">
+            BRAIN OS
+          </span>
+          <span className="font-mono text-[9px] tracking-[0.24em] text-ink-muted uppercase mt-0.5">
+            ARCH-360 // VAULT
+          </span>
+        </div>
+      </div>
+    );
+  }
+
+  // 3. Vertical Stacked Monolith
+  if (variant === 'vertical') {
+    return (
+      <div className={`inline-flex flex-col items-center text-center ${className}`}>
+        <svg
+          viewBox="0 0 100 100"
+          fill="currentColor"
+          width={size * 1.6}
+          height={size * 1.6}
+          className="mb-3"
+        >
+          <path fillRule="evenodd" clipRule="evenodd" d={LOGO_PATH} />
+        </svg>
+        <span className="font-mono text-lg font-bold tracking-[0.22em] text-ink uppercase">
+          BRAIN OS
+        </span>
+        <span className="font-mono text-[10px] tracking-[0.28em] text-ink-muted uppercase mt-1">
+          360-NODE KNOWLEDGE ENGINE
+        </span>
+      </div>
+    );
+  }
+
+  // 4. App Icon Squircle
+  if (variant === 'app-icon') {
+    return (
+      <div
+        style={{ width: size, height: size }}
+        className={`relative rounded-[22%] bg-ink flex items-center justify-center p-[20%] shadow-sm border border-black/10 ${className}`}
+      >
+        <svg viewBox="0 0 100 100" fill="#FFFFFF" className="w-full h-full">
+          <path fillRule="evenodd" clipRule="evenodd" d={LOGO_PATH} />
+        </svg>
+      </div>
+    );
+  }
+
+  // 5. Architectural Blueprint (Image 2 style)
+  if (variant === 'blueprint') {
+    return (
+      <div
+        className={`relative border border-drafting-line border-dashed bg-paper p-5 font-mono text-[9px] text-ink-muted select-none ${className}`}
+      >
+        <div className="flex justify-between items-center mb-3 text-[10px]">
+          <span className="font-semibold text-ink">[ 01 ]</span>
+          <span className="text-stamp font-mono font-medium"># 2026.10</span>
+        </div>
+        <div className="flex items-center justify-center py-4 relative">
+          {/* Construction crosshair */}
+          <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+            <div className="w-full h-[1px] border-b border-drafting-line border-dotted" />
+            <div className="h-full w-[1px] border-r border-drafting-line border-dotted absolute" />
+          </div>
+          <svg viewBox="0 0 100 100" fill="#121212" width={size * 1.4} height={size * 1.4} className="relative z-10">
+            <path fillRule="evenodd" clipRule="evenodd" d={LOGO_PATH} />
+          </svg>
+        </div>
+        <div className="flex justify-between items-center mt-3 pt-2 border-t border-drafting-line border-dotted text-[8px] tracking-wider uppercase">
+          <span>DIM: 330×328</span>
+          <span>SYSTEM // VERIFIED</span>
+        </div>
+      </div>
+    );
+  }
+
+  // 6. Circular Medallion Seal
+  if (variant === 'seal') {
+    return (
+      <div
+        style={{ width: size * 1.8, height: size * 1.8 }}
+        className={`relative rounded-full border border-ink flex items-center justify-center p-3 ${className}`}
+      >
+        <div className="absolute inset-1 rounded-full border border-dashed border-ink/40 pointer-events-none" />
+        <svg viewBox="0 0 100 100" fill="currentColor" className="w-1/2 h-1/2">
+          <path fillRule="evenodd" clipRule="evenodd" d={LOGO_PATH} />
+        </svg>
+      </div>
+    );
+  }
+
+  // 7. Monochrome Inverted Stamp
+  return (
+    <div className={`inline-flex items-center gap-3 bg-ink text-white px-4 py-2.5 rounded-sm border border-neutral-800 ${className}`}>
+      <svg viewBox="0 0 100 100" fill="#FFFFFF" width={size * 0.75} height={size * 0.75}>
+        <path fillRule="evenodd" clipRule="evenodd" d={LOGO_PATH} />
+      </svg>
+      <div className="flex flex-col text-left leading-none font-mono">
+        <span className="text-xs font-bold tracking-[0.2em] uppercase text-white">BRAIN OS</span>
+        <span className="text-[8px] tracking-[0.2em] text-neutral-400 uppercase mt-0.5">DARK REVISION [07]</span>
+      </div>
+    </div>
+  );
+}
