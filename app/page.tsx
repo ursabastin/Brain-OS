@@ -241,10 +241,10 @@ export default function HomePage() {
                 </div>
                 <div className="text-left leading-none font-mono">
                   <span className="text-xs sm:text-sm font-black tracking-widest text-black uppercase block">
-                    BRAIN OS STUDIO
+                    BRAIN OS &bull; SOFTWARE COMPANY
                   </span>
-                  <span className="text-[9px] font-bold text-neutral-700 tracking-wider uppercase">
-                    SOVEREIGN DIGITAL PRODUCTS
+                  <span className="text-[9px] font-bold text-neutral-800 tracking-wider uppercase">
+                    SOVEREIGN SYSTEMS FOR MODERN SOLOPRENEURS
                   </span>
                 </div>
               </div>
@@ -252,10 +252,13 @@ export default function HomePage() {
               {/* Punchy Brutalist Headline */}
               <div className="space-y-3 sm:space-y-4">
                 <h1 className="text-2xl sm:text-5xl lg:text-6xl font-black font-mono tracking-tight text-black uppercase leading-[1.1]">
-                  STOP RUNNING YOUR BUSINESS ON CHAOTIC BOOKMARKS.
+                  SOVEREIGN SYSTEMS FOR MODERN SOLOPRENEURS.
                 </h1>
-                <p className="text-sm sm:text-lg font-mono text-neutral-700 max-w-2xl mx-auto leading-relaxed">
-                  We engineer 12 flagship digital product architectures released quarterly over 3 years. Start with our foundation: the 360-node Obsidian Second Brain &amp; AI Connection Engine.
+                <p className="text-base sm:text-xl font-mono font-black text-black tracking-wide uppercase">
+                  Knowledge graphs. AI engines. Leverage.
+                </p>
+                <p className="text-xs sm:text-base font-mono text-neutral-700 max-w-2xl mx-auto leading-relaxed">
+                  Stop running your business on chaotic bookmarks. 12 quarterly digital product architectures, 360 production nodes, and 3,255 Wikilinks. Access the flagship vaults below.
                 </p>
               </div>
 

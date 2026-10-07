@@ -24,19 +24,27 @@ export const Footer: React.FC = () => {
                   BRAIN OS
                 </span>
                 <span className="font-mono text-[9px] font-bold text-neutral-400 uppercase tracking-widest">
-                  SOVEREIGN DIGITAL PRODUCTS
+                  SOLOPRENEUR SYSTEMS &bull; SOFTWARE COMPANY
                 </span>
               </div>
             </Link>
 
-            <p className="text-xs text-neutral-400 font-sans leading-relaxed">
-              Engineering 12 flagship digital product architectures released quarterly over 3 years. Powered by the foundational 360-node Obsidian Second Brain. Local-first and subscription-free.
+            <p className="text-xs text-neutral-300 font-sans leading-relaxed">
+              Sovereign systems for modern solopreneurs. Knowledge graphs. AI engines. Leverage. Engineering 12 flagship digital product architectures released quarterly over 3 years. Powered by the foundational 360-node Obsidian Second Brain.
             </p>
 
-            <div className="pt-1">
+            <div className="pt-1 flex flex-wrap items-center gap-2">
+              <a
+                href="https://instagram.com/brainos.site"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-neutral-900 border border-neutral-700 text-[10px] text-neo-yellow font-bold uppercase hover:border-neo-yellow transition-colors"
+              >
+                <span>IG: @BRAINOS.SITE &rarr;</span>
+              </a>
               <div className="inline-flex items-center gap-2 px-2.5 py-1 bg-neutral-900 border border-neutral-700 text-[10px] text-neo-lime font-bold uppercase">
                 <span className="w-2 h-2 rounded-full bg-neo-lime animate-pulse" />
-                <span>SYSTEM: PRODUCTION VERIFIED</span>
+                <span>CATEGORY: SOFTWARE COMPANY</span>
               </div>
             </div>
           </div>

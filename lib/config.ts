@@ -2,9 +2,12 @@ export const SITE_CONFIG = {
   name: 'Brain OS',
   domain: 'brainos.site',
   url: process.env.NEXT_PUBLIC_APP_URL || 'https://brainos.site',
-  title: 'Brain OS: The Sovereign Digital Product Syndicate & 360-Node Second Brain',
+  title: 'Brain OS | Sovereign Systems for Modern Solopreneurs',
   description:
-    'An elite ecosystem of 12 quarterly digital product architectures over 3 years. Powered by the flagship 360-node Obsidian Second Brain.',
+    'Sovereign systems for modern solopreneurs. Knowledge graphs. AI engines. Leverage. Powered by the 360-node Obsidian Second Brain.',
+  category: 'Software Company',
+  instagram: 'https://instagram.com/brainos.site',
+  instagramHandle: '@brainos.site',
   supportEmail: 'support@brainos.site',
   priceInr: 999,
   postLaunchPriceInr: 1399,
@@ -17,3 +20,4 @@ export const SITE_CONFIG = {
   launchStartDate: '2026-10-15T00:00:00+05:30',
   launchEndDate: '2026-11-15T23:59:59+05:30',
 };
+

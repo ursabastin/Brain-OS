@@ -29,7 +29,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenCheckout }) => {
               BRAIN OS
             </span>
             <span className="hidden sm:inline font-mono text-[9px] font-bold tracking-widest text-neutral-600 uppercase">
-              STUDIO &bull; 12-PRODUCT SYNDICATE
+              SOLOPRENEUR SYSTEMS &bull; SOFTWARE COMPANY
             </span>
           </div>
         </Link>
@@ -68,6 +68,16 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenCheckout }) => {
               FAQ
             </a>
           </nav>
+
+          <a
+            href="https://instagram.com/brainos.site"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hidden md:inline-flex items-center gap-1 px-2.5 py-2 border-2 border-black bg-white hover:bg-neutral-100 font-mono text-[11px] font-black uppercase text-black transition-colors shrink-0 shadow-neo-sm"
+            title="Official Instagram @brainos.site"
+          >
+            <span>IG: @BRAINOS.SITE</span>
+          </a>
 
           <button
             onClick={handleClick}

@@ -16,7 +16,7 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_CONFIG.url),
   title: {
-    default: `${SITE_CONFIG.name} — 360-Node Obsidian Second Brain`,
+    default: `${SITE_CONFIG.name} — Sovereign Systems for Modern Solopreneurs`,
     template: `%s | ${SITE_CONFIG.name}`,
   },
   description: SITE_CONFIG.description,
@@ -27,6 +27,8 @@ export const metadata: Metadata = {
   },
   keywords: [
     'Brain OS',
+    'Solopreneur Systems',
+    'Software Company',
     'Obsidian second brain',
     'Digital product master vault',
     'Pricing psychology',
@@ -36,7 +38,7 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: 'Brain OS Architecture' }],
   openGraph: {
-    title: `${SITE_CONFIG.name} — 360-Node Obsidian Second Brain`,
+    title: `${SITE_CONFIG.name} — Sovereign Systems for Modern Solopreneurs`,
     description: SITE_CONFIG.description,
     url: SITE_CONFIG.url,
     siteName: SITE_CONFIG.name,
