@@ -1,8 +1,8 @@
 import { NextResponse } from 'next/server';
-import crypto from 'node:crypto';
-import { safeEqual, createDownloadToken } from '@/lib/security';
+import { createDownloadToken } from '@/lib/security';
 import { markOrderPaid, getOrder } from '@/lib/firebase';
 import { auditLogger } from '@/lib/logger';
+import { verifyRazorpayWebhookSignature } from '@/lib/razorpay';
 
 export async function POST(req: Request) {
   try {
@@ -17,12 +17,9 @@ export async function POST(req: Request) {
         return NextResponse.json({ error: 'Missing webhook signature' }, { status: 400 });
       }
 
-      const expectedSignature = crypto
-        .createHmac('sha256', webhookSecret)
-        .update(rawBody)
-        .digest('hex');
+      const isValid = verifyRazorpayWebhookSignature({ rawBody, signature });
 
-      if (!safeEqual(signature, expectedSignature)) {
+      if (!isValid) {
         await auditLogger.securityAlert('Webhook signature mismatch', { received: signature }, req);
         return NextResponse.json({ error: 'Invalid webhook signature' }, { status: 400 });
       }
@@ -32,13 +29,27 @@ export async function POST(req: Request) {
     const event = payload.event;
     const paymentEntity = payload.payload?.payment?.entity;
     const orderEntity = payload.payload?.order?.entity;
+    const paymentLinkEntity = payload.payload?.payment_link?.entity;
 
-    // Handle payment.captured or order.paid
-    if (event === 'payment.captured' || event === 'order.paid') {
-      const orderId = paymentEntity?.order_id || orderEntity?.id;
+    // Handle payment.captured, order.paid, or payment_link.paid
+    if (event === 'payment.captured' || event === 'order.paid' || event === 'payment_link.paid') {
+      const orderId =
+        paymentEntity?.order_id ||
+        orderEntity?.id ||
+        paymentLinkEntity?.id ||
+        paymentLinkEntity?.reference_id;
       const paymentId = paymentEntity?.id || 'pay_wh_' + Date.now();
-      const amountPaise = paymentEntity?.amount || orderEntity?.amount || 99900;
-      const email = paymentEntity?.email || paymentEntity?.notes?.email || orderEntity?.notes?.email;
+      const amountPaise =
+        paymentEntity?.amount ||
+        orderEntity?.amount ||
+        paymentLinkEntity?.amount ||
+        99900;
+      const email =
+        paymentEntity?.email ||
+        paymentEntity?.notes?.customerEmail ||
+        paymentEntity?.notes?.email ||
+        orderEntity?.notes?.email ||
+        paymentLinkEntity?.customer?.email;
 
       if (orderId && email) {
         const existingOrder = await getOrder(orderId);
@@ -59,7 +70,7 @@ export async function POST(req: Request) {
       }
     } else if (event === 'payment.failed') {
       const orderId = paymentEntity?.order_id || 'unknown';
-      const errorDesc = paymentEntity?.error_description || 'Payment captured failed';
+      const errorDesc = paymentEntity?.error_description || 'Payment capture failed';
       await auditLogger.paymentFailed(orderId, errorDesc, req);
     }
 

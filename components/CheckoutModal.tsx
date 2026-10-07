@@ -112,6 +112,42 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose })
     }
   };
 
+  const handleDirectPaymentLink = async () => {
+    setError('');
+
+    if (!email || !email.includes('@')) {
+      setError('Please provide a valid delivery email.');
+      return;
+    }
+
+    if (SITE_CONFIG.paymentPageUrl) {
+      window.location.href = SITE_CONFIG.paymentPageUrl;
+      return;
+    }
+
+    setLoading(true);
+
+    try {
+      const res = await fetch('/api/checkout/payment-link', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: email.trim(), name: name.trim() }),
+      });
+
+      const data = await res.json();
+      if (!data.success) {
+        throw new Error(data.error || 'Failed to generate payment link.');
+      }
+
+      if (data.paymentLink) {
+        window.location.href = data.paymentLink;
+      }
+    } catch (err: unknown) {
+      setError(err instanceof Error ? err.message : 'Could not generate payment link.');
+      setLoading(false);
+    }
+  };
+
   const { currentPrice, comparePrice } = getPricingConfig();
 
   return (
@@ -198,14 +234,25 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose })
             </p>
           )}
 
-          <button
-            type="submit"
-            disabled={loading}
-            className="w-full py-4 bg-neo-yellow hover:bg-[#FFE000] text-black font-mono text-sm font-black uppercase tracking-wider flex items-center justify-center gap-2 btn-neo cursor-pointer"
-          >
-            {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : <Lock className="w-4 h-4" />}
-            <span>{loading ? 'INITIALIZING CHECKOUT...' : `PAY ₹${currentPrice} & DOWNLOAD VAULT`}</span>
-          </button>
+          <div className="space-y-2">
+            <button
+              type="submit"
+              disabled={loading}
+              className="w-full py-4 bg-neo-yellow hover:bg-[#FFE000] text-black font-mono text-sm font-black uppercase tracking-wider flex items-center justify-center gap-2 btn-neo cursor-pointer"
+            >
+              {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : <Lock className="w-4 h-4" />}
+              <span>{loading ? 'INITIALIZING CHECKOUT...' : `PAY ₹${currentPrice} & DOWNLOAD VAULT`}</span>
+            </button>
+
+            <button
+              type="button"
+              onClick={handleDirectPaymentLink}
+              disabled={loading}
+              className="w-full py-2 bg-white hover:bg-neutral-100 text-black border-2 border-black font-mono text-[11px] font-bold uppercase tracking-wider flex items-center justify-center gap-1.5 cursor-pointer transition-colors"
+            >
+              <span>OR PAY VIA DIRECT PAYMENT LINK (UPI / MOBILE) &rarr;</span>
+            </button>
+          </div>
         </form>
 
         <div className="flex items-center justify-between text-[10px] text-neutral-600 font-mono pt-1 border-t-2 border-black">

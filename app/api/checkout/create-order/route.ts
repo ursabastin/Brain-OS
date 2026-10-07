@@ -1,16 +1,18 @@
 import { NextResponse } from 'next/server';
-import Razorpay from 'razorpay';
-import { SITE_CONFIG } from '@/lib/config';
 import { getPricingConfig } from '@/lib/pricing';
 import { createOrderRecord } from '@/lib/firebase';
 import { auditLogger } from '@/lib/logger';
+import { isRazorpayConfigured, createRazorpayOrder } from '@/lib/razorpay';
 
 export async function POST(req: Request) {
   try {
     const { email, name } = await req.json();
 
     if (!email || !email.includes('@')) {
-      return NextResponse.json({ success: false, error: 'Valid email is required.' }, { status: 400 });
+      return NextResponse.json(
+        { success: false, error: 'Valid email is required.' },
+        { status: 400 }
+      );
     }
 
     const { currentPrice } = getPricingConfig();
@@ -18,11 +20,8 @@ export async function POST(req: Request) {
     const clientName = (name || 'Anonymous Purchaser').trim();
     const clientEmail = email.toLowerCase().trim();
 
-    const keyId = process.env.RAZORPAY_KEY_ID;
-    const keySecret = process.env.RAZORPAY_KEY_SECRET;
-
     // Resilient fallback if fresh credentials haven't been added yet
-    if (!keyId || !keySecret) {
+    if (!isRazorpayConfigured()) {
       const mockOrderId = `order_test_${Date.now()}`;
       await createOrderRecord({
         orderId: mockOrderId,
@@ -44,16 +43,14 @@ export async function POST(req: Request) {
       });
     }
 
-    const rzp = new Razorpay({ key_id: keyId, key_secret: keySecret });
-
-    const order = await rzp.orders.create({
-      amount: amountInPaise,
-      currency: 'INR',
+    // Create live Razorpay Order via SDK
+    const order = await createRazorpayOrder({
+      amountInPaise,
       receipt: `rcpt_${Date.now().toString().slice(-8)}`,
       notes: { email: clientEmail, name: clientName },
     });
 
-    // Save order in Cloud Firestore
+    // Save order in Google Cloud Firestore
     await createOrderRecord({
       orderId: order.id,
       customerName: clientName,
@@ -67,12 +64,15 @@ export async function POST(req: Request) {
     // Forensic audit log
     await auditLogger.orderInitialized(order.id, clientEmail, Number(order.amount), req);
 
+    const publicRazorpayKey =
+      process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID || process.env.RAZORPAY_KEY_ID || '';
+
     return NextResponse.json({
       success: true,
       orderId: order.id,
       amount: order.amount,
       currency: order.currency,
-      keyId: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID || keyId,
+      keyId: publicRazorpayKey.trim(),
     });
   } catch (error: any) {
     await auditLogger.paymentFailed('unknown', error?.message || 'Failed to create order', req);

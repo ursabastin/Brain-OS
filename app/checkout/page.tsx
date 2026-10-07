@@ -127,6 +127,44 @@ export default function CheckoutPage() {
     }
   };
 
+  const handleDirectPaymentLink = async () => {
+    setError('');
+
+    if (!email || !email.includes('@')) {
+      setError('Please provide a valid delivery email address before requesting payment link.');
+      return;
+    }
+
+    // If static Razorpay Payment Page URL is configured in SITE_CONFIG, redirect immediately
+    if (SITE_CONFIG.paymentPageUrl) {
+      window.location.href = SITE_CONFIG.paymentPageUrl;
+      return;
+    }
+
+    setLoading(true);
+
+    try {
+      const res = await fetch('/api/checkout/payment-link', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: email.trim(), name: name.trim() }),
+      });
+
+      const data = await res.json();
+      if (!data.success) {
+        throw new Error(data.error || 'Failed to generate payment link.');
+      }
+
+      if (data.paymentLink) {
+        window.location.href = data.paymentLink;
+      }
+    } catch (err: unknown) {
+      setError(err instanceof Error ? err.message : 'Could not generate payment link.');
+      setLoading(false);
+    }
+  };
+
+
   return (
     <div className="min-h-screen flex flex-col bg-neo-bg text-black selection:bg-neo-yellow selection:text-black font-sans">
       <Navbar />
@@ -284,7 +322,7 @@ export default function CheckoutPage() {
                   </p>
                 </div>
 
-                <div className="pt-2">
+                <div className="pt-2 space-y-2">
                   <button
                     type="submit"
                     disabled={loading}
@@ -301,6 +339,16 @@ export default function CheckoutPage() {
                         <span>PAY ₹{currentPrice} &amp; GET INSTANT VAULT</span>
                       </>
                     )}
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={handleDirectPaymentLink}
+                    disabled={loading}
+                    className="w-full py-2.5 bg-white hover:bg-neutral-100 text-black border-2 border-black font-mono text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 cursor-pointer transition-colors"
+                  >
+                    <Zap className="w-3.5 h-3.5 text-black" />
+                    <span>OR PAY VIA DIRECT PAYMENT LINK (UPI &bull; MOBILE)</span>
                   </button>
                 </div>
 

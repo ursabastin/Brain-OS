@@ -19,5 +19,7 @@ export const SITE_CONFIG = {
   domainsCount: '11',
   launchStartDate: '2026-10-15T00:00:00+05:30',
   launchEndDate: '2026-11-15T23:59:59+05:30',
+  paymentPageUrl: process.env.NEXT_PUBLIC_RAZORPAY_PAYMENT_PAGE_URL || '',
 };
+
 

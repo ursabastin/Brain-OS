@@ -1,8 +1,8 @@
 import { NextResponse } from 'next/server';
-import crypto from 'node:crypto';
-import { safeEqual, createDownloadToken } from '@/lib/security';
+import { createDownloadToken } from '@/lib/security';
 import { markOrderPaid } from '@/lib/firebase';
 import { auditLogger } from '@/lib/logger';
+import { verifyRazorpayPaymentSignature } from '@/lib/razorpay';
 
 export async function POST(req: Request) {
   try {
@@ -10,32 +10,35 @@ export async function POST(req: Request) {
 
     if (!orderId || !paymentId || !signature || !email) {
       await auditLogger.paymentFailed(orderId || 'unknown', 'Missing payment verification parameters', req);
-      return NextResponse.json({ success: false, error: 'Missing payment verification parameters.' }, { status: 400 });
+      return NextResponse.json(
+        { success: false, error: 'Missing payment verification parameters.' },
+        { status: 400 }
+      );
     }
 
     const keySecret = process.env.RAZORPAY_KEY_SECRET;
 
-    // Verify HMAC-SHA256 signature if keySecret is available
+    // Verify HMAC-SHA256 signature if keySecret is configured
     if (keySecret) {
-      const generatedSig = crypto
-        .createHmac('sha256', keySecret)
-        .update(`${orderId}|${paymentId}`)
-        .digest('hex');
+      const isValid = verifyRazorpayPaymentSignature({ orderId, paymentId, signature });
 
-      if (!safeEqual(signature, generatedSig)) {
-        await auditLogger.securityAlert('Signature mismatch detected during payment verification', {
-          orderId,
-          paymentId,
-          receivedSignature: signature,
-        }, req);
-        return NextResponse.json({ success: false, error: 'Invalid cryptographic payment signature.' }, { status: 400 });
+      if (!isValid) {
+        await auditLogger.securityAlert(
+          'Signature mismatch detected during payment verification',
+          { orderId, paymentId, receivedSignature: signature },
+          req
+        );
+        return NextResponse.json(
+          { success: false, error: 'Invalid cryptographic payment signature.' },
+          { status: 400 }
+        );
       }
     }
 
     // Mint short-lived token (7 days)
     const token = createDownloadToken(email, orderId);
 
-    // Update order record in Cloud Firestore
+    // Update order record in Google Cloud Firestore
     await markOrderPaid(orderId, {
       paymentId,
       signature,
